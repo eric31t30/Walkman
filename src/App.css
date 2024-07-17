@@ -17,6 +17,9 @@ html, body {
 }
 
 .container-app{
+  display: flex;
   background-color: rgb(118, 182, 74);
   min-height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
