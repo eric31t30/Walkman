@@ -41,3 +41,31 @@
     top: 0px;
     z-index: 15;
 }
+
+.button-play{
+    position: absolute;
+    right: 176px;
+    bottom: 8px;
+    z-index: 20;
+}
+
+.button-rewind{
+    position: absolute;
+    right: 140px;
+    bottom: 84px;
+    z-index: 20;
+}
+
+.button-pause{
+    position: absolute;
+    right: 40px;
+    bottom: 84px;
+    z-index: 20;
+}
+
+.buttons-controls{
+    position: absolute;
+    right: 52px;
+    bottom: 12px;
+    z-index: 20;
+}
