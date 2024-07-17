@@ -1,3 +1,43 @@
-.container{
-    background-color: red;
+.sprite-rendering{
+    image-rendering: pixelated;
+}
+
+.container-walkman{
+    background-color: rgba(0, 255, 255, .2);
+    position: relative;
+    left: 40%;
+    width: 60%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.walkman-body{
+    position: relative;
+    background-image: url(../assets/sprites/walkman-body.png);
+    width: 812px;
+    height: 528px;
+    z-index: 5;
+    user-select: none;
+}
+
+.capstan{
+    position: absolute;
+    background-image: url(../assets/sprites/capstan.png);
+    width: 292px;
+    height: 72px;
+    left: 200px;
+    top: 136px;
+    z-index: 10;
+}
+
+.cassette-door{
+    position: absolute;
+    background-image: url(../assets/sprites/cassette-door.png);
+    width: 592px;
+    height: 296px;
+    left: 0px;
+    top: 0px;
+    z-index: 15;
 }
