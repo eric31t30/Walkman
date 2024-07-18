@@ -1,0 +1,26 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pixelate');
+
+.cassette{
+    width: 214px;
+    height: 136px;
+    image-rendering: pixelated;
+    transform: rotate(350deg);
+    scale: 1.2;
+    user-select: none;
+}
+
+.list-element {
+    margin: 100px 0;
+    margin-left: 90px;
+    position: relative;
+}
+
+.song-title{
+    position: absolute;
+    font-family: 'SF Pixelate', sans-serif;
+    font-size: 14px;
+    left: 52px;
+    top: 21px;
+    color: rgba(0, 0, 0, .9);
+}
+
