@@ -24,6 +24,8 @@ export default function Walkman() {
         <img className='button-pause' src={buttonPause} alt="boton" draggable='false' />
 
         <img className='buttons-controls' src={buttonControls} alt="boton" draggable='false' />
+
+        <span className='walkman-meal-decoration sprite-rendering'></span>
       
       </div>
     </div>
