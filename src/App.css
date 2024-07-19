@@ -18,8 +18,34 @@ html, body {
 
 .container-app{
   display: flex;
-  background-color: rgb(118, 182, 74);
   min-height: 100vh;
   justify-content: center;
   align-items: center;
 }
+
+.background{
+  background-image: url(./assets/sprites/meal-background.png);
+  background-repeat: repeat;
+  image-rendering: pixelated;
+  user-select: none;
+}
+
+.border-deco{
+  position: absolute;
+  min-width: 100vw;
+  height: 148px;
+  background-repeat: repeat-x;
+}
+
+.border-top{
+  background-image: url(./assets/sprites/border-deco-top.png);
+  left: 0px;
+  top: 0px;
+}
+
+.border-bottom{
+  background-image: url(./assets/sprites/border-deco-bottom.png);
+  left: 0px;
+  bottom: 0px;
+}
+
