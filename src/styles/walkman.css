@@ -3,12 +3,12 @@
 }
 
 .container-walkman{
-    background-color: rgba(0, 255, 255, .2);
     min-height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    scale: .9;
 }
 
 .walkman-body{
