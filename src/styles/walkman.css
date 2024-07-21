@@ -40,32 +40,57 @@
     z-index: 15;
 }
 
-.button-play{
+.buttons{
     position: absolute;
+    pointer-events: all;
+    cursor: pointer;
+    z-index: 20;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.button-play{
+    background-image: url(../assets/sprites/button-play.png);
+    width: 116px;
+    height: 52px;
     right: 176px;
     bottom: 8px;
-    z-index: 20;
 }
 
 .button-rewind{
-    position: absolute;
+    background-image: url(../assets/sprites/button-rewind.png);
+    width: 160px;
+    height: 32px;
     right: 140px;
     bottom: 84px;
-    z-index: 20;
 }
 
 .button-pause{
-    position: absolute;
+    background-image: url(../assets/sprites/button-pause.png);
+    width: 84px;
+    height: 32px;
     right: 40px;
     bottom: 84px;
-    z-index: 20;
 }
 
 .buttons-controls{
-    position: absolute;
+    background-image: url(../assets/sprites/buttons-controls.png);
+    width: 84px;
+    height: 48px;
     right: 52px;
     bottom: 12px;
-    z-index: 20;
+}
+
+.button-press{
+    background-position: 0px -8px;
+    filter: brightness(.7);
+    border-top: 4px solid rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+.no-events{
+    cursor: pointer;
+    pointer-events: none;
 }
 
 
@@ -77,4 +102,5 @@
     left: -56px;
     top: 29px;
     z-index: 25;
+    pointer-events: none;
 }
