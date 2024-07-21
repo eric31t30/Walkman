@@ -1,14 +1,48 @@
 import '../styles/walkman.css'
+import { useState, useRef, useEffect } from 'react'
 
 
-import buttonPlay from '../assets/sprites/button-play.png'
-import buttonRewind from '../assets/sprites/button-rewind.png'
-import buttonPause from '../assets/sprites/button-pause.png'
-import buttonControls from '../assets/sprites/buttons-controls.png'
 
 export default function Walkman() {
- 
+  
+  const [buttonPicked, setbuttonPicked] = useState('')
 
+  const buttonPlay = useRef()
+  const buttonRewind = useRef()
+  const buttonPause = useRef()
+
+  const buttons = [buttonPlay, buttonRewind, buttonPause]
+  
+  const pressButton = (element) =>{
+    
+    const classButton = element.target.classList[1];
+
+    setbuttonPicked(classButton);
+  }
+
+  useEffect(() => {
+
+    if (buttonPicked == 'button-rewind') {
+      
+      setTimeout(() => {
+        setbuttonPicked('');
+      }, 800);
+    
+    }
+    
+    for(const button of buttons){
+      button.current.classList.add('no-events');
+  
+      setTimeout(() => {
+        button.current.classList.remove('no-events');
+      }, 800);
+    }
+      
+  }, [buttonPicked])
+  
+  
+  
+  
   return (
     <div className='container-walkman'>
       <div className='walkman-body sprite-rendering'>
@@ -17,16 +51,34 @@ export default function Walkman() {
         
         <div className='cassette-door'></div>
 
-        <img className='button-play' src={buttonPlay} alt="boton" draggable='false' />
+        <div 
+          className={`buttons button-play ${buttonPicked === 'button-play' ? 'button-press' : ''}`} 
+          onClick={(event) => {
+            pressButton(event);
+          }}  
+          ref={buttonPlay}
+        ></div>
 
-        <img className='button-rewind' src={buttonRewind} alt="boton" draggable='false' />
+        <div 
+          className={`buttons button-rewind ${buttonPicked === 'button-rewind' ? 'button-press' : ''}`}  
+          onClick={(event) => {
+            pressButton(event);
+          }} 
+          ref={buttonRewind}
+        ></div>
 
-        <img className='button-pause' src={buttonPause} alt="boton" draggable='false' />
+        <div 
+          className={`buttons button-pause ${buttonPicked === 'button-pause' ? 'button-press' : ''}`}  
+          onClick={(event) => {
+            pressButton(event);
+          }} 
+          ref={buttonPause}
+        ></div>
 
-        <img className='buttons-controls' src={buttonControls} alt="boton" draggable='false' />
+        <div className='buttons buttons-controls'></div>
 
         <span className='walkman-meal-decoration sprite-rendering'></span>
-      
+
       </div>
     </div>
   )
