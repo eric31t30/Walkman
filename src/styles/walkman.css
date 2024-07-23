@@ -30,14 +30,38 @@
     z-index: 10;
 }
 
+.container-door{
+    position: absolute;
+    width: 592px;
+    height: 580px;
+    left: 0px;
+    bottom: 232px;
+    z-index: 15;
+}
+
+.door-colision{
+    position: absolute;
+    width: 592px;
+    height: 180px;
+    left: 0px;
+    top: -260px;
+    z-index: 15;
+}
+
 .cassette-door{
     position: absolute;
     background-image: url(../assets/sprites/cassette-door.png);
     width: 592px;
     height: 296px;
     left: 0px;
-    top: 0px;
+    bottom: 0px;
     z-index: 15;
+    cursor: pointer;
+    transition: all .3s linear;
+}
+
+.cassette-door-open{
+    bottom: 260px;
 }
 
 .buttons{
