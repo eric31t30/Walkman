@@ -4,14 +4,15 @@
     width: 214px;
     height: 136px;
     image-rendering: pixelated;
-    transform: rotate(350deg);
     scale: 1.2;
-    user-select: none;
+    cursor: pointer;
+    z-index: 50;
+    pointer-events: all;
 }
 
 .list-element {
     margin: 100px 0;
-    margin-left: 90px;
+    margin-left: 120px;
     position: relative;
 }
 
@@ -24,3 +25,6 @@
     color: rgba(0, 0, 0, .9);
 }
 
+.on-dragging{
+    transition: transform .1s ease;
+}
