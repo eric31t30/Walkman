@@ -4,11 +4,12 @@
 
 .container-walkman{
     min-height: 100vh;
-    width: 100%;
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
     scale: .9;
+    pointer-events: none;
 }
 
 .walkman-body{
@@ -18,6 +19,7 @@
     height: 528px;
     z-index: 5;
     user-select: none;
+    right: 50px;
 }
 
 .capstan{
@@ -56,6 +58,7 @@
     left: 0px;
     bottom: 0px;
     z-index: 15;
+    pointer-events: all;
     cursor: pointer;
     transition: all .3s linear;
 }

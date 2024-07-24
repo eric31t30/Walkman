@@ -12,8 +12,6 @@ export default function Walkman({ openDoor }) {
   const buttonRewind = useRef()
   const buttonPause = useRef()
 
-  const cassetteDoor = useRef()
-
   const buttons = [buttonPlay, buttonRewind, buttonPause]
   
   const pressButton = (element) =>{

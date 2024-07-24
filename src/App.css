@@ -35,6 +35,7 @@ html, body {
   min-width: 100vw;
   height: 148px;
   background-repeat: repeat-x;
+  pointer-events: none;
 }
 
 .border-top{
@@ -48,4 +49,3 @@ html, body {
   left: 0px;
   bottom: 0px;
 }
-

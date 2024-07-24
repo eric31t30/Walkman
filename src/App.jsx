@@ -24,7 +24,7 @@ function App() {
   
 
   return (
-
+  
     <DndContext onDragEnd={handleDragEnd} modifiers={[restrictToParentElement]}>
       <div className='container-app background'>
         <ScrollableList></ScrollableList>
