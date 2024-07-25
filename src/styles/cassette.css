@@ -6,8 +6,8 @@
     image-rendering: pixelated;
     scale: 1.2;
     cursor: pointer;
-    z-index: 50;
     pointer-events: all;
+    transform: rotate(350deg);
 }
 
 .list-element {
@@ -27,4 +27,12 @@
 
 .on-dragging{
     transition: transform .1s ease;
+}
+
+.si{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
 }
