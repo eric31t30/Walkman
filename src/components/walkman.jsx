@@ -6,15 +6,19 @@ import Cassette from './cassette'
 
 export default function Walkman({ openDoor, receiveCassette }) {
 
-  const [buttonPicked, setbuttonPicked] = useState('')
-  const [animationEnd, setAnimationEnd] = useState(false);
-  const [cassetteAnimation, setCassetteAnimation] = useState(false)
- 
- 
+  const [buttonPicked, setbuttonPicked] = useState('')                 // verfica cual es el boton seleccionado 
+  const [cassetteActual, setCassetteActual] = useState('')             // tiene el valor de cassette elegido
+  const [animationEnd, setAnimationEnd] = useState(true);              // termina la animacion cuando se cambia el cassette
+  const [cassetteAnimation, setCassetteAnimation] = useState(false)    // activa la animacion del cassette elegido
+  
   const buttonPlay = useRef()
   const buttonRewind = useRef()
   const buttonPause = useRef()
+  const cassetteSelected = useRef()                                     // referencia al objeto del cassette
+  const prevCassette = useRef();                                        // guarda el valor del cassette previamente elegido no actual el anterior
+
   
+
   const buttons = [buttonPlay, buttonRewind, buttonPause]
   
   const pressButton = (element) =>{
@@ -48,8 +52,6 @@ export default function Walkman({ openDoor, receiveCassette }) {
     id: 'droppable-cassette-door',
   });
   
- 
-
   const {attributes, listeners, setNodeRef: setDraggableNodeRef, transform} = useDraggable({
     id: 'draggable-cassette-door',
   });
@@ -57,13 +59,31 @@ export default function Walkman({ openDoor, receiveCassette }) {
     transform: `translate3d(0px, ${transform.y}px, 0)`,
   } : undefined;
 
+
   useEffect(() => {
-    if (!receiveCassette == false) {
-      setCassetteAnimation(true)
+    if (openDoor == true) {
+      setCassetteActual(receiveCassette)
+      prevCassette.current = receiveCassette.id
     }
+    
   }, [receiveCassette])
   
-  
+  const prevReceiveCassette = prevCassette.current;
+
+
+  useEffect(() => {
+    if(prevReceiveCassette !== receiveCassette.id && openDoor == true){
+      setCassetteAnimation(false)
+    }
+  }, [receiveCassette])
+ 
+  useEffect(() => {
+    if (!cassetteActual == false && openDoor == true) {
+      setCassetteAnimation(true)
+      setAnimationEnd(false)
+    } 
+  }, [cassetteActual])
+
   
   return (
     <div className='container-walkman'>
@@ -83,8 +103,14 @@ export default function Walkman({ openDoor, receiveCassette }) {
           ></div>
 
           {cassetteAnimation 
-            ? <div className='cassette-actual' id={receiveCassette.id} onAnimationEnd={()=>{setAnimationEnd(true)}}>
-                <p className='song-title text-cassette'>{receiveCassette.songTitle}</p>
+            ? <div 
+                className={`cassette-actual ${cassetteAnimation ? 'cassette-animation-name' : ''}`}
+                id={cassetteActual.id} 
+                ref={cassetteSelected} 
+                onAnimationEnd={()=>{setAnimationEnd(true)}}
+              >
+                
+                <p className='song-title text-cassette'>{cassetteActual.songTitle}</p>
               </div>
             
             :''

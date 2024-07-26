@@ -141,8 +141,11 @@
     background-image: url(../assets/sprites/cassette.png);
     scale: 2;
     transform-origin: bottom left;
-    animation: cassette-animation 2.5s forwards;
+    animation:  2.5s forwards;
     z-index: 50;
+} 
+.cassette-animation-name{
+    animation-name: cassette-animation;
 }
 
 

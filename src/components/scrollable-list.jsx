@@ -5,9 +5,9 @@ import Cassette from './cassette';
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 
-export default function ScrollableList({ cassetteClick}) {
+export default function ScrollableList({ cassetteClick, doorState}) {
 
-  const [cassetteSelect, setCassetteSelect] = useState('')
+  const [cassetteSelect, setCassetteSelect] = useState('') //guarda el valor del cassette seleccionado para ser enviado
   
   const [cassettes, setCassettes] = useState([
     {id: 0, songTitle: '90s - flvs'},
@@ -20,7 +20,9 @@ export default function ScrollableList({ cassetteClick}) {
   
 
   const cassetteSelected = (id) =>{
-    setCassetteSelect(cassettes[id])
+    if (doorState == true) {
+      setCassetteSelect(cassettes[id])
+    }
   }
 
   useEffect(() => {
