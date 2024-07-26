@@ -2,7 +2,7 @@ import '../styles/walkman.css'
 import { useState, useRef, useEffect } from 'react'
 import { useDroppable } from '@dnd-kit/core'
 import { useDraggable } from '@dnd-kit/core'
-import Cassette from './cassette'
+import ReactPlayer from 'react-player'
 
 export default function Walkman({ openDoor, receiveCassette }) {
 
@@ -19,6 +19,8 @@ export default function Walkman({ openDoor, receiveCassette }) {
 
   
 
+  // logica para los botones del walkman
+
   const buttons = [buttonPlay, buttonRewind, buttonPause]
   
   const pressButton = (element) =>{
@@ -27,6 +29,7 @@ export default function Walkman({ openDoor, receiveCassette }) {
 
     setbuttonPicked(classButton);
   }
+  
 
   useEffect(() => {
 
@@ -48,6 +51,10 @@ export default function Walkman({ openDoor, receiveCassette }) {
       
   }, [buttonPicked])
 
+  
+ 
+  // logica para el drag and drop del walkman
+
   const {isOver, setNodeRef: setDroppableNodeRef} = useDroppable({
     id: 'droppable-cassette-door',
   });
@@ -60,6 +67,9 @@ export default function Walkman({ openDoor, receiveCassette }) {
   } : undefined;
 
 
+  
+  // logica para el cassette elegido
+  
   useEffect(() => {
     if (openDoor == true) {
       setCassetteActual(receiveCassette)
@@ -83,6 +93,9 @@ export default function Walkman({ openDoor, receiveCassette }) {
       setAnimationEnd(false)
     } 
   }, [cassetteActual])
+
+
+
 
   
   return (
