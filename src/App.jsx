@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import ScrollableList from './components/scrollable-list'
 import Walkman from './components/walkman'
@@ -9,7 +9,10 @@ import { restrictToParentElement } from '@dnd-kit/modifiers';
 function App() {
  
 
-  const [openDoor, setOpenDoor] = useState(false);
+  const [openDoor, setOpenDoor] = useState(false);                //abre o cierra la puerta del walkman ademas verifica el estado de esta
+  const [cassetteOnStage, setCassetteOnStage] = useState(false)   //recibe el cassette elegido desde scrollable list true si lo recibe
+  const [cassetteSend, setCassetteSend] = useState(false)         //envia el cassette elegido al walkman 
+ 
   
   const handleDragEnd = (event) => {
     const { active, over } = event;
@@ -21,14 +24,20 @@ function App() {
     }
   };
 
-  
+  const cassetteClick = (data)=> {
+    setCassetteOnStage(data)
+  }
 
+  useEffect(() => {
+    setCassetteSend(cassetteOnStage)
+  }, [cassetteOnStage])
+  
   return (
   
     <DndContext onDragEnd={handleDragEnd} modifiers={[restrictToParentElement]}>
       <div className='container-app background'>
-        <ScrollableList></ScrollableList>
-        <Walkman openDoor={openDoor}></Walkman>
+        <ScrollableList cassetteClick={cassetteClick} doorState={openDoor}></ScrollableList>
+        <Walkman openDoor={openDoor} receiveCassette={cassetteSend}></Walkman>
 
         <span className='border-deco border-top'></span>
         <span className='border-deco border-bottom'></span>
