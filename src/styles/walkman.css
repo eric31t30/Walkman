@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    scale: .9;
+    scale: 1;
     pointer-events: none;
 }
 
@@ -120,6 +120,15 @@
     pointer-events: none;
 }
 
+.reproducer{
+    width: 0px;
+    height: 0px;
+    position: absolute;
+}
+
+.si{
+    pointer-events: all;
+}
 
 .walkman-meal-decoration{
     position: absolute;
@@ -172,3 +181,4 @@
     }
     
 }
+

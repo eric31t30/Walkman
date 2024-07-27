@@ -2,7 +2,7 @@ import '../styles/walkman.css'
 import { useState, useRef, useEffect } from 'react'
 import { useDroppable } from '@dnd-kit/core'
 import { useDraggable } from '@dnd-kit/core'
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/file'
 
 export default function Walkman({ openDoor, receiveCassette }) {
 
@@ -10,14 +10,24 @@ export default function Walkman({ openDoor, receiveCassette }) {
   const [cassetteActual, setCassetteActual] = useState('')             // tiene el valor de cassette elegido
   const [animationEnd, setAnimationEnd] = useState(true);              // termina la animacion cuando se cambia el cassette
   const [cassetteAnimation, setCassetteAnimation] = useState(false)    // activa la animacion del cassette elegido
-  
+
+  const [playing, setPlaying] = useState(false);                       // inicia o pausa la cancion
+  const [song, setSong] = useState('')                                 // valor de la cancion (cancion elegida)
+  const [buttonPress, setButtonPress] = useState(false)                // activa el sonido del boton
+  const [tape, setTape] = useState(false)                              // activa el sonido del cassette door
+  const [switchCassette, setSwitchCassette] = useState(false)          // activa el sonido de cambio de cassette
+  const [doorCont, setDoorCont] = useState(false);                         // verfica si la puerta se cerro por primera vez
+                       
   const buttonPlay = useRef()
   const buttonRewind = useRef()
   const buttonPause = useRef()
   const cassetteSelected = useRef()                                     // referencia al objeto del cassette
   const prevCassette = useRef();                                        // guarda el valor del cassette previamente elegido no actual el anterior
-
   
+  const playerSongRef = useRef();                                       // referencia al reproductor (musica en general)
+  const playerButtonsRef = useRef();                                    // referencia el player de los botones
+  const playerTapeRef = useRef();                                       // referencia al cassette door
+  const playerSwitchRef = useRef();                                     // referencia al cambio de cassette
 
   // logica para los botones del walkman
 
@@ -29,7 +39,6 @@ export default function Walkman({ openDoor, receiveCassette }) {
 
     setbuttonPicked(classButton);
   }
-  
 
   useEffect(() => {
 
@@ -48,9 +57,17 @@ export default function Walkman({ openDoor, receiveCassette }) {
         button.current.classList.remove('no-events');
       }, 800);
     }
-      
   }, [buttonPicked])
 
+  
+  useEffect(() => {
+    if (buttonPress == true) {
+      setTimeout(() => {
+        playerButtonsRef.current.seekTo(0);
+        setButtonPress(false)
+      }, 800);
+    }
+  }, [buttonPress])
   
  
   // logica para el drag and drop del walkman
@@ -75,7 +92,6 @@ export default function Walkman({ openDoor, receiveCassette }) {
       setCassetteActual(receiveCassette)
       prevCassette.current = receiveCassette.id
     }
-    
   }, [receiveCassette])
   
   const prevReceiveCassette = prevCassette.current;
@@ -91,11 +107,58 @@ export default function Walkman({ openDoor, receiveCassette }) {
     if (!cassetteActual == false && openDoor == true) {
       setCassetteAnimation(true)
       setAnimationEnd(false)
+      setSong(`/songs/${cassetteActual.songTitle}.mp3`);
     } 
   }, [cassetteActual])
 
+  
+  
+  // control de los audios
 
+  const restartAudio = () => {
+    playerSongRef.current.seekTo(0);
+    setPlaying(false);
+  };
 
+  useEffect(() => {
+    if (openDoor == false) {
+      setDoorCont(true);
+    }
+  }, [openDoor]);
+
+  useEffect(() => {
+    if (doorCont && openDoor === false) {
+      setTimeout(() => {
+        setTape(true);
+      }, 400);
+    } else if (doorCont > 1) {
+      setTape(false);
+    }
+  }, [openDoor]);
+
+  useEffect(() => {
+    if (tape) {
+      setTimeout(() => {
+        playerTapeRef.current.seekTo(0);
+        setTape(false)
+      }, 800);
+    }
+  }, [tape])
+
+  useEffect(() => {
+    if(cassetteAnimation){
+      setTimeout(()=>{
+        setSwitchCassette(true)
+      }, 800)
+    
+      setTimeout(() => {
+        playerSwitchRef.current.seekTo(0);
+        setSwitchCassette(false)
+      }, 1200);
+    }
+  }, [cassetteAnimation])
+  
+  
 
   
   return (
@@ -112,7 +175,7 @@ export default function Walkman({ openDoor, receiveCassette }) {
             style={draggableStyle}
             {...attributes}
             {...listeners}
-
+            
           ></div>
 
           {cassetteAnimation 
@@ -133,7 +196,11 @@ export default function Walkman({ openDoor, receiveCassette }) {
         <div 
           className={`buttons button-play ${buttonPicked === 'button-play' ? 'button-press' : ''}`} 
           onClick={(event) => {
-            pressButton(event);
+            {
+              pressButton(event),
+              setPlaying(true),
+              setButtonPress(true)
+            }
           }}  
           ref={buttonPlay}
         ></div>
@@ -143,7 +210,11 @@ export default function Walkman({ openDoor, receiveCassette }) {
         <div 
           className={`buttons button-rewind ${buttonPicked === 'button-rewind' ? 'button-press' : ''}`}  
           onClick={(event) => {
-            pressButton(event); 
+            {
+              pressButton(event),
+              restartAudio(),
+              setButtonPress(true)
+            }
           }} 
           ref={buttonRewind}
         ></div>
@@ -151,7 +222,11 @@ export default function Walkman({ openDoor, receiveCassette }) {
         <div 
           className={`buttons button-pause ${buttonPicked === 'button-pause' ? 'button-press' : ''}`}  
           onClick={(event) => {
-            pressButton(event);
+            {
+              pressButton(event),
+              setPlaying(false),
+              setButtonPress(true)
+            }
           }} 
           ref={buttonPause}
         ></div>
@@ -160,6 +235,41 @@ export default function Walkman({ openDoor, receiveCassette }) {
         
         <span className='walkman-meal-decoration sprite-rendering'></span>
       </div>
+
+      <ReactPlayer
+        className='reproducer'
+        ref={playerSongRef}
+        url={song}
+        controls
+        playing={playing}
+      />
+
+      <ReactPlayer
+        className='reproducer'
+        ref={playerButtonsRef}
+        url={'/sound-effects/button-controls.wav'}
+        controls
+        playing={buttonPress}
+        volume={.5}
+      />
+
+      <ReactPlayer
+        className='reproducer'
+        ref={playerTapeRef}
+        url={'/sound-effects/tape.wav'}
+        controls
+        playing={tape}
+        />
+
+     
+      <ReactPlayer
+        className='reproducer'
+        ref={playerSwitchRef}
+        url={'/sound-effects/switch-cassette.wav'}
+        controls
+        playing={switchCassette}
+        />
+      
     </div>
   )
 }

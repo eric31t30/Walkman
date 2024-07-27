@@ -10,11 +10,11 @@ export default function ScrollableList({ cassetteClick, doorState}) {
   const [cassetteSelect, setCassetteSelect] = useState('') //guarda el valor del cassette seleccionado para ser enviado
   
   const [cassettes, setCassettes] = useState([
-    {id: 0, songTitle: '90s - flvs'},
-    {id: 1, songTitle: 'ok'},
-    {id: 2, songTitle: 'green to blue'},
-    {id: 3, songTitle: 'call me'},
-    {id: 4, songTitle: 'simpson wave'},
+    {id: 0, songTitle: 'call me'},
+    {id: 1, songTitle: 'simpsonwave'},
+    {id: 2, songTitle: 'memory reboot'},
+    {id: 3, songTitle: 'in a garden'},
+    {id: 4, songTitle: 'The synth wars'},
   ])
   
   
