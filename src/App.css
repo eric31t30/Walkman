@@ -36,6 +36,7 @@ html, body {
   height: 148px;
   background-repeat: repeat-x;
   pointer-events: none;
+  z-index: 2;
 }
 
 .border-top{

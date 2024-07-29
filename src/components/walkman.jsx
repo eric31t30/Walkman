@@ -16,8 +16,8 @@ export default function Walkman({ openDoor, receiveCassette }) {
   const [buttonPress, setButtonPress] = useState(false)                // activa el sonido del boton
   const [tape, setTape] = useState(false)                              // activa el sonido del cassette door
   const [switchCassette, setSwitchCassette] = useState(false)          // activa el sonido de cambio de cassette
-  const [doorCont, setDoorCont] = useState(false);                         // verfica si la puerta se cerro por primera vez
-                       
+  const [doorCont, setDoorCont] = useState(false);                     // verfica si la puerta se cerro por primera vez
+ 
   const buttonPlay = useRef()
   const buttonRewind = useRef()
   const buttonPause = useRef()
@@ -100,14 +100,20 @@ export default function Walkman({ openDoor, receiveCassette }) {
   useEffect(() => {
     if(prevReceiveCassette !== receiveCassette.id && openDoor == true){
       setCassetteAnimation(false)
+      setPlaying(false);
+      setbuttonPicked('');
     }
+    
   }, [receiveCassette])
  
   useEffect(() => {
     if (!cassetteActual == false && openDoor == true) {
       setCassetteAnimation(true)
       setAnimationEnd(false)
-      setSong(`/songs/${cassetteActual.songTitle}.mp3`);
+      setTimeout(() => {
+        setSong(`/songs/${cassetteActual.songTitle}.mp3`);
+      }, 800);
+      
     } 
   }, [cassetteActual])
 
@@ -157,10 +163,7 @@ export default function Walkman({ openDoor, receiveCassette }) {
       }, 1200);
     }
   }, [cassetteAnimation])
-  
-  
 
-  
   return (
     <div className='container-walkman'>
       <div className='walkman-body sprite-rendering'>
@@ -240,25 +243,29 @@ export default function Walkman({ openDoor, receiveCassette }) {
         className='reproducer'
         ref={playerSongRef}
         url={song}
-        controls
         playing={playing}
+        onEnded={()=> {setbuttonPicked(''), setPlaying(false);}}
+        width='0px'
+        height='0px'
       />
 
       <ReactPlayer
         className='reproducer'
         ref={playerButtonsRef}
         url={'/sound-effects/button-controls.wav'}
-        controls
         playing={buttonPress}
         volume={.5}
+        width='0px'
+        height='0px'
       />
 
       <ReactPlayer
         className='reproducer'
         ref={playerTapeRef}
         url={'/sound-effects/tape.wav'}
-        controls
         playing={tape}
+        width='0px'
+        height='0px'
         />
 
      
@@ -266,8 +273,9 @@ export default function Walkman({ openDoor, receiveCassette }) {
         className='reproducer'
         ref={playerSwitchRef}
         url={'/sound-effects/switch-cassette.wav'}
-        controls
         playing={switchCassette}
+        width='0px'
+        height='0px'
         />
       
     </div>
