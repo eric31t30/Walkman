@@ -8,7 +8,7 @@ import 'rc-slider/assets/index.css';
 
 export default function Walkman({ openDoor, receiveCassette }) {
 
-  const [buttonPicked, setbuttonPicked] = useState('')                 // verfica cual es el boton seleccionado 
+  const [pickedButton, setpickedButton] = useState('')                 // verfica cual es el boton seleccionado 
   const [cassetteActual, setCassetteActual] = useState('')             // tiene el valor de cassette elegido
   const [animationEnd, setAnimationEnd] = useState(true);              // termina la animacion cuando se cambia el cassette
   const [cassetteAnimation, setCassetteAnimation] = useState(false)    // activa la animacion del cassette elegido
@@ -21,9 +21,9 @@ export default function Walkman({ openDoor, receiveCassette }) {
   const [doorCont, setDoorCont] = useState(false);                     // verfica si la puerta se cerro por primera vez
   const [valueVolume, setvalueVolume] = useState(6);                   // volumen de la cancion (0 a 10)
   
-  const buttonPlay = useRef()
-  const buttonRewind = useRef()
-  const buttonPause = useRef()
+  const playButton = useRef()
+  const rewindButton = useRef()
+  const pauseButton = useRef()
   const cassetteSelected = useRef()                                     // referencia al objeto del cassette
   const prevCassette = useRef();                                        // guarda el valor del cassette previamente elegido no actual el anterior
   
@@ -34,21 +34,21 @@ export default function Walkman({ openDoor, receiveCassette }) {
 
   // logica para los botones del walkman
 
-  const buttons = [buttonPlay, buttonRewind, buttonPause]
+  const buttons = [playButton, rewindButton, pauseButton]
   
-  const pressButton = (element) =>{
+  const pressedButton = (element) =>{
     
     const classButton = element.target.classList[1];
 
-    setbuttonPicked(classButton);
+    setpickedButton(classButton);
   }
 
   useEffect(() => {
 
-    if (buttonPicked == 'button-rewind') {
+    if (pickedButton == 'rewind-button') {
       
       setTimeout(() => {
-        setbuttonPicked('');
+        setpickedButton('');
       }, 800);
     
     }
@@ -60,7 +60,7 @@ export default function Walkman({ openDoor, receiveCassette }) {
         button.current.classList.remove('no-events');
       }, 800);
     }
-  }, [buttonPicked])
+  }, [pickedButton])
 
   
   useEffect(() => {
@@ -104,7 +104,7 @@ export default function Walkman({ openDoor, receiveCassette }) {
     if(prevReceiveCassette !== receiveCassette.id && openDoor == true){
       setCassetteAnimation(false)
       setPlaying(false);
-      setbuttonPicked('');
+      setpickedButton('');
     }
     
   }, [receiveCassette])
@@ -168,6 +168,7 @@ export default function Walkman({ openDoor, receiveCassette }) {
   }, [cassetteAnimation])
 
 
+  // logica volumen
   
 
   const normalizeVolume = (value) => {
@@ -212,44 +213,44 @@ export default function Walkman({ openDoor, receiveCassette }) {
         </div>
         
         <div 
-          className={`buttons button-play ${buttonPicked === 'button-play' ? 'button-press' : ''}`} 
+          className={`buttons play-button ${pickedButton === 'play-button' ? 'button-press' : ''}`} 
           onClick={(event) => {
             {
-              pressButton(event),
+              pressedButton(event),
               setPlaying(true),
               setButtonPress(true)
             }
           }}  
-          ref={buttonPlay}
+          ref={playButton}
         ></div>
 
         
 
         <div 
-          className={`buttons button-rewind ${buttonPicked === 'button-rewind' ? 'button-press' : ''}`}  
+          className={`buttons rewind-button ${pickedButton === 'rewind-button' ? 'button-press' : ''}`}  
           onClick={(event) => {
             {
-              pressButton(event),
+              pressedButton(event),
               restartAudio(),
               setButtonPress(true)
             }
           }} 
-          ref={buttonRewind}
+          ref={rewindButton}
         ></div>
 
         <div 
-          className={`buttons button-pause ${buttonPicked === 'button-pause' ? 'button-press' : ''}`}  
+          className={`buttons pause-button ${pickedButton === 'pause-button' ? 'button-press' : ''}`}  
           onClick={(event) => {
             {
-              pressButton(event),
+              pressedButton(event),
               setPlaying(false),
               setButtonPress(true)
             }
           }} 
-          ref={buttonPause}
+          ref={pauseButton}
         ></div>
 
-        <div className='buttons buttons-controls no-events'></div>
+        <div className='buttons controls-buttons no-events'></div>
 
     
           <div className='cont-volume-button'>
@@ -291,7 +292,7 @@ export default function Walkman({ openDoor, receiveCassette }) {
         ref={playerSongRef}
         url={song}
         playing={playing}
-        onEnded={()=> {setbuttonPicked(''), setPlaying(false);}}
+        onEnded={()=> {setpickedButton(''), setPlaying(false);}}
         width='0px'
         height='0px'
         volume={parseFloat(normalizeVolume(valueVolume))}
