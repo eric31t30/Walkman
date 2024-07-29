@@ -14,3 +14,43 @@
     overflow-y: auto;
     border-right: 5px solid rgb(94, 94, 94);
 }
+
+.text-open-tape{
+    position: absolute;
+    text-align: center;
+    align-content: center;
+    font-family: 'SF Pixelate', sans-serif;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, .5);
+    width: 600px;
+    height: 50px;
+    top: 80px;
+    left: 40%;
+    color: white;
+    z-index: 100;
+    border-radius: 10px;
+    animation:  3s linear forwards;
+    user-select: none;
+}
+
+.tape-animation{
+    animation-name: text-tape;
+}
+
+@keyframes text-tape{
+    0%{
+        opacity: 0;
+    }
+
+    20%{
+        opacity: 1;
+    }
+    
+    80%{
+        opacity: 1;
+    }
+    
+    100%{
+        opacity: 0;
+    }
+}
