@@ -3,6 +3,8 @@ import { useState, useRef, useEffect } from 'react'
 import { useDroppable } from '@dnd-kit/core'
 import { useDraggable } from '@dnd-kit/core'
 import ReactPlayer from 'react-player/file'
+import Slider from 'rc-slider'
+import 'rc-slider/assets/index.css';
 
 export default function Walkman({ openDoor, receiveCassette }) {
 
@@ -17,7 +19,8 @@ export default function Walkman({ openDoor, receiveCassette }) {
   const [tape, setTape] = useState(false)                              // activa el sonido del cassette door
   const [switchCassette, setSwitchCassette] = useState(false)          // activa el sonido de cambio de cassette
   const [doorCont, setDoorCont] = useState(false);                     // verfica si la puerta se cerro por primera vez
- 
+  const [valueVolume, setvalueVolume] = useState(6);                   // volumen de la cancion (0 a 10)
+  
   const buttonPlay = useRef()
   const buttonRewind = useRef()
   const buttonPause = useRef()
@@ -164,6 +167,18 @@ export default function Walkman({ openDoor, receiveCassette }) {
     }
   }, [cassetteAnimation])
 
+
+  
+
+  const normalizeVolume = (value) => {
+    return ((value - 1) / (10 - 1)).toFixed(1);
+  };
+
+  const handleChange = (value) => {
+    setvalueVolume(value);
+    
+  };
+
   return (
     <div className='container-walkman'>
       <div className='walkman-body sprite-rendering'>
@@ -234,7 +249,39 @@ export default function Walkman({ openDoor, receiveCassette }) {
           ref={buttonPause}
         ></div>
 
-        <div className='buttons buttons-controls'></div>
+        <div className='buttons buttons-controls no-events'></div>
+
+    
+          <div className='cont-volume-button'>
+            <Slider
+              className='volume-button'
+              min={1}
+              max={10}
+              step={1}
+              defaultValue={valueVolume}
+              onChange={handleChange}
+              styles={{
+                handle: {
+                  height: 28,
+                  width: 140,
+                  borderRadius: 0,
+                  opacity: 1,
+                  boxSizing: 'border-box',
+                  border: 'none',
+                  boxShadow: 'none',
+                  backgroundColor: 'transparent'
+                },
+                track:{
+                  backgroundColor: 'transparent'
+                },
+                rail:{
+                  backgroundColor: 'transparent'
+                }
+                
+              }}
+            />
+          </div>
+        
         
         <span className='walkman-meal-decoration sprite-rendering'></span>
       </div>
@@ -247,6 +294,7 @@ export default function Walkman({ openDoor, receiveCassette }) {
         onEnded={()=> {setbuttonPicked(''), setPlaying(false);}}
         width='0px'
         height='0px'
+        volume={parseFloat(normalizeVolume(valueVolume))}
       />
 
       <ReactPlayer

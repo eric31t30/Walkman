@@ -110,6 +110,32 @@
     bottom: 12px;
 }
 
+.cont-volume-button{
+    position: absolute;
+    width: 118px;
+    height: 36px;
+    left: 244px;
+    bottom: 32px;
+    z-index: 20;
+    align-content: center;
+    text-align: center;
+}
+
+.volume-button{
+    pointer-events: all;
+}
+
+.rc-slider-handle{
+    background-image: url(../assets/sprites/button-volume.png);
+    background-color: #ffffff00;
+    bottom: -7px;
+}
+
+.rc-slider-handle:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 .button-press{
     background-position: 0px -8px;
     filter: brightness(.7);
