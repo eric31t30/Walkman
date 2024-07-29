@@ -78,32 +78,32 @@
     overflow: hidden;
 }
 
-.button-play{
-    background-image: url(../assets/sprites/button-play.png);
+.play-button{
+    background-image: url(../assets/sprites/play-button.png);
     width: 116px;
     height: 52px;
     right: 176px;
     bottom: 8px;
 }
 
-.button-rewind{
-    background-image: url(../assets/sprites/button-rewind.png);
+.rewind-button{
+    background-image: url(../assets/sprites/rewind-button.png);
     width: 160px;
     height: 32px;
     right: 140px;
     bottom: 84px;
 }
 
-.button-pause{
-    background-image: url(../assets/sprites/button-pause.png);
+.pause-button{
+    background-image: url(../assets/sprites/pause-button.png);
     width: 84px;
     height: 32px;
     right: 40px;
     bottom: 84px;
 }
 
-.buttons-controls{
-    background-image: url(../assets/sprites/buttons-controls.png);
+.controls-buttons{
+    background-image: url(../assets/sprites/controls-buttons.png);
     width: 84px;
     height: 48px;
     right: 52px;
@@ -126,7 +126,7 @@
 }
 
 .rc-slider-handle{
-    background-image: url(../assets/sprites/button-volume.png);
+    background-image: url(../assets/sprites/volume-button.png);
     background-color: #ffffff00;
     bottom: -7px;
 }
