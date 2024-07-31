@@ -6,6 +6,7 @@ import ReactPlayer from 'react-player/file'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css';
 
+
 export default function Walkman({ openDoor, receiveCassette }) {
 
   const [pickedButton, setpickedButton] = useState('')                 // verfica cual es el boton seleccionado 
@@ -179,6 +180,7 @@ export default function Walkman({ openDoor, receiveCassette }) {
     setvalueVolume(value);
     
   };
+
 
   return (
     <div className='container-walkman'>
