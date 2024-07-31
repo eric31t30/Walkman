@@ -1,3 +1,10 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pixelate');
+
+@font-face{
+    font-family: pixelmaster;
+    src: url(/font/PixelMaster.woff) format('woff');
+}
+
 .list-container{
     width: 50%;
     min-height: 100vh;
@@ -13,6 +20,29 @@
     list-style-type: none;
     overflow-y: auto;
     border-right: 5px solid rgb(94, 94, 94);
+}
+
+.call-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, .4);
+    position: relative;
+    width: 280px;
+    height: 100px;
+    cursor: pointer;
+    pointer-events: all;
+    margin: 70px 0;
+    margin-left: 80px;
+    border-radius: 10px;
+    border: solid 2px rgba(255, 255, 255, .7);
+}
+
+.call-form-icon{
+    background-image: url(/icon/sum.png);
+    width: 32px;
+    height: 32px;
+    filter: invert(100);
 }
 
 .text-open-tape{

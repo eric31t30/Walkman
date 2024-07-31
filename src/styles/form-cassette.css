@@ -1,0 +1,191 @@
+@font-face{
+    font-family: pixelmaster;
+    src: url(/font/PixelMaster.woff) format('woff');
+}
+
+.container-form{
+    position: absolute;
+    left: 30%;
+    top: 20%;
+    z-index: 50;
+    background-color: rgba(11, 11, 11, .3);
+    width: 1000px;
+    height: 600px;
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.close-form{
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    width: 24px;
+    height: 24px;
+    background-image: url(/icon/close.png);
+    filter: invert(100);
+    cursor: pointer;
+}
+
+.form{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(11, 11, 11, .4);
+    border-radius: 25px;
+}
+
+.cont-text{
+    width: 140%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.input-text{
+    position: relative;
+    top: 30px;
+    background-color: transparent;
+    outline: none;
+    color: white;
+    border: none;
+    border-bottom: solid 2px white;
+    width: 300px;
+    text-align: center;
+    font-family: 'pixelmaster', sans-serif;
+    font-size: 42px;
+    letter-spacing: 2px;
+}
+
+.input-text::placeholder{
+    font-size: 38px;
+    color: rgba(255, 255, 255, .5);
+}
+
+.notice{
+    font-family: 'pixelmaster', sans-serif;
+    color: rgba(255, 255, 255, .4);
+    font-size: 26px;
+}
+
+.input-cassette-style{
+    background-image: url(../assets/sprites/cassette.png);
+    width: 214px;
+    height: 136px;
+    scale: 1.7;
+}
+
+.cont-text-input-cassette{
+    position: absolute;
+    display: flex;
+    left: 44px;
+    top: 18px;
+    width: 140px;
+    height: 22px;
+    overflow: hidden;
+}
+
+.text-input-cassette{
+    font-family: "pixelmaster", sans-serif;
+    color: rgba(0, 0, 0, .9);
+    font-size: 26px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont-file{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 25px;
+    background-color: rgba(11, 11, 11, .8);
+    border: 2px solid rgba(255, 255, 255, .6);
+    overflow: hidden;
+}
+
+.input-file{
+    position: absolute;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.file-button{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.file-button-img{
+    background-image: url(/icon/icon-input.png);
+    width: 128px;
+    height: 128px;
+    filter: invert(100);
+}
+
+.confirmed-file{
+    background-image: url(/icon/check.png);
+    width: 32px;
+    height: 32px;
+    filter: invert(100);
+    position: relative;
+    top: 140px;
+    opacity: .2;
+}
+
+.confirmed-file-active{
+    opacity: 1;
+}
+
+.cont-file-name{
+    position: relative;
+    top: 20px;
+    width: 70%;
+    height: 30px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.file-name{
+    color: white;
+    font-family: 'SF Pixelate', sans-serif;
+    font-size: 20px;
+}
+
+.button-form{
+    background-color: rgb(202, 137, 46);
+    outline: none;
+    border: none;
+    width: 200px;
+    height: 50px;
+    font-size: 35px;
+    border-radius: 5px;
+    color: white;
+    font-family: 'pixelmaster', sans-serif;
+    pointer-events: all;
+    cursor: pointer;
+    margin-top: 20px;
+    border-top: 3px solid rgb(227, 170, 91);
+    border-bottom: 8px solid rgb(174, 92, 29);
+    letter-spacing: 2px;
+}
+
+.button-form:active{
+    background-color: rgb(150, 98, 27);
+    border-top: 3px solid rgb(196, 128, 33);
+    border-bottom: 8px solid rgb(130, 63, 11);
+}

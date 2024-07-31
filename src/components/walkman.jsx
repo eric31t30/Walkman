@@ -114,7 +114,7 @@ export default function Walkman({ openDoor, receiveCassette }) {
       setCassetteAnimation(true)
       setAnimationEnd(false)
       setTimeout(() => {
-        setSong(`/songs/${cassetteActual.songTitle}.mp3`);
+        setSong(cassetteActual.audioUrl);
       }, 800);
       
     } 
