@@ -15,7 +15,7 @@
 
 .list-element {
     margin: 100px 0;
-    margin-left: 120px;
+    margin-left: 140px;
     position: relative;
 }
 
@@ -36,7 +36,7 @@
     position: absolute;
     width: 0px;
     height: 80%;
-    left: 100px;
+    left: 120px;
     top: 30%;
     image-rendering: auto;
     background-color: rgba(0, 0, 0, .5);
@@ -67,25 +67,17 @@
 .cassette:hover + .remove-button{
     opacity: 1;
     visibility: visible;
-    left: 30px;
+    left: 50px;
     width: 70px;
 }
 
 .remove-button:hover{
     opacity: 1;
     visibility: visible;
-    left: 30px;
+    left: 50px;
     width: 70px;
 }
 
 .on-dragging{
     transition: transform .1s ease;
-}
-
-.si{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0px;
-    top: 0px;
 }

@@ -1,7 +1,7 @@
 import '../styles/cassette.css'
 import cassetteImage from '../assets/sprites/cassette.png'
 
-export default function Cassette({ songTitle, id, cassetteSelected }) {
+export default function Cassette({ songTitle, id, cassetteSelected, deleteCassette }) {
 
   
   const style ={
@@ -16,7 +16,7 @@ export default function Cassette({ songTitle, id, cassetteSelected }) {
         style={style}>
         <p className='song-title'>{songTitle}</p>
       </div>
-      <span className='remove-button' onClick={()=>{console.log('siiii');}}>
+      <span className='remove-button' onClick={()=>{deleteCassette(id)}}>
         <span className='remove-button-img'></span>
       </span>
     </div>
