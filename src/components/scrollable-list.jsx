@@ -1,10 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/scrollable-list.css'
 import Cassette from './cassette';
 
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 import FormCassette from './form-cassette';
+
+import { v4 as uuidv4 } from 'uuid';
 
 export default function ScrollableList({ cassetteClick, doorState}) {
 
@@ -13,11 +15,11 @@ export default function ScrollableList({ cassetteClick, doorState}) {
   const [onForm, setOnForm] = useState('')
   
   const [cassettes, setCassettes] = useState([
-    {id: 0, songTitle: 'call me', audioUrl: '/songs/call me.mp3'},
-    {id: 1, songTitle: 'simpsonwave', audioUrl: '/songs/simpsonwave.mp3'},
-    {id: 2, songTitle: 'memory reboot', audioUrl: '/songs/memory reboot.mp3'},
-    {id: 3, songTitle: 'in a garden', audioUrl: '/songs/in a garden.mp3'},
-    {id: 4, songTitle: 'The synth wars', audioUrl: '/songs/The synth wars.mp3'}
+    {id: uuidv4(), songTitle: 'call me', audioUrl: '/songs/call me.mp3'},
+    {id: uuidv4(), songTitle: 'simpsonwave', audioUrl: '/songs/simpsonwave.mp3'},
+    {id: uuidv4(), songTitle: 'memory reboot', audioUrl: '/songs/memory reboot.mp3'},
+    {id: uuidv4(), songTitle: 'in a garden', audioUrl: '/songs/in a garden.mp3'},
+    {id: uuidv4(), songTitle: 'The synth wars', audioUrl: '/songs/The synth wars.mp3'}
   ])
 
   const cassetteSelected = (id) =>{
@@ -39,7 +41,7 @@ export default function ScrollableList({ cassetteClick, doorState}) {
   const formData =(data)=>{
     setCassettes((prevCassettes) => [
       ...prevCassettes,
-      { id: prevCassettes.length, ...data }
+      { id: uuidv4(), ...data }
     ]);
 
     setOnForm(false)
