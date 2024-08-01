@@ -39,8 +39,7 @@ export default function FormCassette({ formData , closeForm}) {
       setFileName('')
       setconfimedFile(false)
       
-
-			formData(newCassette)
+      formData(newCassette)
     }
   };
 
@@ -54,10 +53,10 @@ export default function FormCassette({ formData , closeForm}) {
     }
   }, [newSongFile])
 
-
+  
   return (
     <div className='container-form'>
-      <div className='close-form' onClick={()=> closeForm(onForm)}></div>
+      <div className='close-form' onClick={()=> {closeForm(onForm)}}></div>
       <form className='form' onSubmit={handleSubmit}>
         <div className='cont-text'>
           <input 

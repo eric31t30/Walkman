@@ -14,15 +14,16 @@
     border-radius: 25px;
     overflow: hidden;
     padding: 20px;
+    transition: all 1s ease;
 }
 
 .close-form{
     position: absolute;
     left: 40px;
     top: 40px;
-    width: 24px;
-    height: 24px;
-    background-image: url(/icon/close.png);
+    width: 32px;
+    height: 32px;
+    background-image: url(/icon/close-pixel.png);
     filter: invert(100);
     cursor: pointer;
 }

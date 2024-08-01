@@ -14,25 +14,29 @@ export default function ScrollableList({ cassetteClick, doorState}) {
   const [tapeMessage, setTapeMessage] = useState(false)     // envia el mensaje de puerta cerrada al cambiar de cassette
   const [onForm, setOnForm] = useState('')
   
-  const [cassettes, setCassettes] = useState([
-    {id: uuidv4(), songTitle: 'call me', audioUrl: '/songs/call me.mp3'},
-    {id: uuidv4(), songTitle: 'simpsonwave', audioUrl: '/songs/simpsonwave.mp3'},
-    {id: uuidv4(), songTitle: 'memory reboot', audioUrl: '/songs/memory reboot.mp3'},
-    {id: uuidv4(), songTitle: 'in a garden', audioUrl: '/songs/in a garden.mp3'},
-    {id: uuidv4(), songTitle: 'The synth wars', audioUrl: '/songs/The synth wars.mp3'}
-  ])
+  const [cassettes, setCassettes] = useState([]);
 
-  const cassetteSelected = (id) =>{
-    if (doorState == true) {
-      setCassetteSelect(cassettes[id])
-    }
+  useEffect(() => {
+    setCassettes([
+      { id: uuidv4(), songTitle: 'call me', audioUrl: '/songs/call me.mp3' },
+      { id: uuidv4(), songTitle: 'simpsonwave', audioUrl: '/songs/simpsonwave.mp3' },
+      { id: uuidv4(), songTitle: 'memory reboot', audioUrl: '/songs/memory reboot.mp3' },
+      { id: uuidv4(), songTitle: 'in a garden', audioUrl: '/songs/in a garden.mp3' },
+      { id: uuidv4(), songTitle: 'The synth wars', audioUrl: '/songs/The synth wars.mp3' },
+    ]);
+  }, []);
 
-    if (doorState == false) {
-      setTapeMessage(true)
-    }else{
-      setTapeMessage(false)
+  const cassetteSelected = (id) => {
+    if (doorState) {
+      const selectedCassette = cassettes.find(cassette => cassette.id === id);
+      if (selectedCassette) {
+        setCassetteSelect(selectedCassette);
+      }
+    } else {
+      setTapeMessage(true);
     }
-  }
+  };
+
 
   useEffect(() => {
     cassetteClick(cassetteSelect)
@@ -43,7 +47,7 @@ export default function ScrollableList({ cassetteClick, doorState}) {
       ...prevCassettes,
       { id: uuidv4(), ...data }
     ]);
-
+    
     setOnForm(false)
   }
 
