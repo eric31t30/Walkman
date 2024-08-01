@@ -1,3 +1,7 @@
+.cassette-cont{
+    position: relative;
+}
+
 .cassette{
     width: 214px;
     height: 136px;
@@ -6,6 +10,7 @@
     cursor: pointer;
     pointer-events: all;
     transform: rotate(350deg);
+    z-index: 1;
 }
 
 .list-element {
@@ -25,6 +30,52 @@
     color: rgba(0, 0, 0, .9);
     letter-spacing: 1px;
     text-align: center;
+}
+
+.remove-button{
+    position: absolute;
+    width: 0px;
+    height: 80%;
+    left: 100px;
+    top: 30%;
+    image-rendering: auto;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    cursor: pointer;
+    transform: rotate(-10deg);
+    transition: all .4s;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-right: 0px;
+    transform-origin: right;
+    z-index: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.remove-button-img{
+    background-image: url(/icon/close.png);
+    width: 24px;
+    height: 24px;
+    scale: .8;
+    filter: invert(100);
+}
+
+.cassette:hover + .remove-button{
+    opacity: 1;
+    visibility: visible;
+    left: 30px;
+    width: 70px;
+}
+
+.remove-button:hover{
+    opacity: 1;
+    visibility: visible;
+    left: 30px;
+    width: 70px;
 }
 
 .on-dragging{
