@@ -23,7 +23,7 @@
 
 .capstan{
     position: absolute;
-    background-image: url(../assets/sprites/capstan.png);
+    background-image: url(../assets/sprites/capstan-spritesheet.png);
     width: 292px;
     height: 72px;
     left: 200px;

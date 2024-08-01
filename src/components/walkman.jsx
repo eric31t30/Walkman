@@ -5,6 +5,8 @@ import { useDraggable } from '@dnd-kit/core'
 import ReactPlayer from 'react-player/file'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 export default function Walkman({ openDoor, receiveCassette }) {
 
@@ -31,6 +33,10 @@ export default function Walkman({ openDoor, receiveCassette }) {
   const playerButtonsRef = useRef();                                    // referencia el player de los botones
   const playerTapeRef = useRef();                                       // referencia al cassette door
   const playerSwitchRef = useRef();                                     // referencia al cambio de cassette
+
+  const capstanRef = useRef();                                          // referencia al capstan
+  const capstanAnimationRef = useRef();                                 // referencia a la animacion del capstan
+  const { contextSafe } = useGSAP({ scope: capstanRef });               // contexto para la animacion gsap
 
   // logica para los botones del walkman
 
@@ -111,12 +117,13 @@ export default function Walkman({ openDoor, receiveCassette }) {
  
   useEffect(() => {
     if (!cassetteActual == false && openDoor == true) {
-      setCassetteAnimation(true)
-      setAnimationEnd(false)
+      setCassetteAnimation(true);
+      setAnimationEnd(false);
+      pauseCapstan();
+      
       setTimeout(() => {
         setSong(cassetteActual.audioUrl);
       }, 800);
-      
     } 
   }, [cassetteActual])
 
@@ -180,11 +187,34 @@ export default function Walkman({ openDoor, receiveCassette }) {
     
   };
 
+  // logica de la animacion del capstan
+
+  const playCapstan = contextSafe(() => {
+    if (capstanAnimationRef.current) {
+      capstanAnimationRef.current.play();
+    } else {
+      capstanAnimationRef.current = gsap.to('.capstan', {
+        duration: 1,
+        repeat: -1,
+        backgroundPosition: "-1752px",
+        ease: "steps(6)"
+      });
+    }
+  });
+
+  const pauseCapstan = () => {
+    if (capstanAnimationRef.current) {
+      capstanAnimationRef.current.pause();
+    }
+  };
+
   return (
     <div className='container-walkman'>
       <div className='walkman-body sprite-rendering'>
 
-        <div className='capstan'></div>
+        <div className='cont-capstan' ref={capstanRef}>
+          <div className='capstan'></div>
+        </div>
 
         <div className='door-colision' ref={setDroppableNodeRef} ></div>
 
@@ -218,7 +248,8 @@ export default function Walkman({ openDoor, receiveCassette }) {
             {
               pressedButton(event),
               setPlaying(true),
-              setButtonPress(true)
+              setButtonPress(true),
+              playCapstan()
             }
           }}  
           ref={playButton}
@@ -232,7 +263,8 @@ export default function Walkman({ openDoor, receiveCassette }) {
             {
               pressedButton(event),
               restartAudio(),
-              setButtonPress(true)
+              setButtonPress(true),
+              pauseCapstan()
             }
           }} 
           ref={rewindButton}
@@ -244,7 +276,8 @@ export default function Walkman({ openDoor, receiveCassette }) {
             {
               pressedButton(event),
               setPlaying(false),
-              setButtonPress(true)
+              setButtonPress(true),
+              pauseCapstan()
             }
           }} 
           ref={pauseButton}
