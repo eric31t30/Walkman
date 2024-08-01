@@ -68,6 +68,7 @@ export default function ScrollableList({ cassetteClick, doorState}) {
       <SimpleBar className='list' >
       <div className='call-form' onClick={()=> setOnForm(true)}>
         <span className='call-form-icon'></span>
+        <span className='text-call-form'>Añade un cassette</span>
       </div>
         {cassettes.map(cassette => 
           <Cassette 

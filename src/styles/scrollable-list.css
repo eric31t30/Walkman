@@ -28,7 +28,6 @@
     max-height: 100vh;
     list-style-type: none;
     overflow-y: auto;
-    /* border-bottom-right-radius: 25px; */
 }
 
 .call-form{
@@ -45,6 +44,22 @@
     margin-left: 100px;
     border-radius: 10px;
     border: solid 2px rgba(255, 255, 255, .7);
+}
+
+.text-call-form{
+   position: absolute;
+    left: 48px;
+    bottom: 0px;
+    color: rgba(255, 255, 255, .8);
+    font-family: 'pixelmaster', sans-serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+    opacity: 0;
+    transition: all 1s ease;
+}
+
+.call-form:hover .text-call-form{
+    opacity: 1;
 }
 
 .call-form-icon{
