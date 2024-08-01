@@ -11,7 +11,6 @@ export default function ScrollableList({ cassetteClick, doorState}) {
   const [cassetteSelect, setCassetteSelect] = useState('')  // guarda el valor del cassette seleccionado para ser enviado
   const [tapeMessage, setTapeMessage] = useState(false)     // envia el mensaje de puerta cerrada al cambiar de cassette
   const [onForm, setOnForm] = useState('')
-  const [cassetteData, setCassetteData] = useState('')
   
   const [cassettes, setCassettes] = useState([
     {id: 0, songTitle: 'call me', audioUrl: '/songs/call me.mp3'},
@@ -49,10 +48,21 @@ export default function ScrollableList({ cassetteClick, doorState}) {
   const closeForm =(data)=>{
     setOnForm(data)
   }
+
+  const deleteCassette= (id)=>{
+    const removeCassette = cassettes.filter(cassette => cassette.id !== id);
+    setCassettes(removeCassette)
+  }
+  
+  useEffect(() => {
+    console.log(cassettes);
+  }, [cassettes])
+  
   
   return (
     <div className='list-container'>
       
+      <div className='list-container-background'>
       <SimpleBar className='list' >
       <div className='call-form' onClick={()=> setOnForm(true)}>
         <span className='call-form-icon'></span>
@@ -63,6 +73,7 @@ export default function ScrollableList({ cassetteClick, doorState}) {
             key={cassette.id} 
             id={cassette.id} 
             cassetteSelected={cassetteSelected}
+            deleteCassette={deleteCassette}
           />
         )}
       </SimpleBar>
@@ -77,6 +88,7 @@ export default function ScrollableList({ cassetteClick, doorState}) {
       {onForm && (
         <FormCassette formData={formData} closeForm={closeForm}></FormCassette>
       )}
+      </div>
     
     </div>
   );
