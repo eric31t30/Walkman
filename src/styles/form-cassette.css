@@ -3,6 +3,22 @@
     src: url(/font/PixelMaster.woff) format('woff');
 }
 
+.transition-form{
+    transition: all .8s ease;
+    position: absolute;
+    left: 110%;
+    top: 0%;
+    opacity: 0;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.visible{
+    opacity: 1;
+    top: 20%;
+    pointer-events: all;
+}
+
 .container-form{
     position: absolute;
     left: 110%;

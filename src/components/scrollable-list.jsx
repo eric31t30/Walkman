@@ -12,8 +12,9 @@ export default function ScrollableList({ cassetteClick, doorState}) {
 
   const [cassetteSelect, setCassetteSelect] = useState('')  // guarda el valor del cassette seleccionado para ser enviado
   const [tapeMessage, setTapeMessage] = useState(false)     // envia el mensaje de puerta cerrada al cambiar de cassette
-  const [onForm, setOnForm] = useState('')
-  
+  const [onForm, setOnForm] = useState('')                  // activa el formulario
+  const [transitionForm, setTransformForm] = useState('')   // activa la transicion del formulario
+
   const [cassettes, setCassettes] = useState([]);
 
   useEffect(() => {
@@ -37,7 +38,6 @@ export default function ScrollableList({ cassetteClick, doorState}) {
     }
   };
 
-
   useEffect(() => {
     cassetteClick(cassetteSelect)
   }, [cassetteSelect])
@@ -47,12 +47,21 @@ export default function ScrollableList({ cassetteClick, doorState}) {
       ...prevCassettes,
       { id: uuidv4(), ...data }
     ]);
+
+    setTransformForm(false)
     
-    setOnForm(false)
+    setTimeout(() => {
+      setOnForm(false)
+    }, 800);
   }
 
   const closeForm =(data)=>{
-    setOnForm(data)
+
+    setTransformForm(data)
+    
+    setTimeout(() => {
+      setOnForm(data)
+    }, 800);
   }
 
   const deleteCassette= (id)=>{
@@ -60,41 +69,38 @@ export default function ScrollableList({ cassetteClick, doorState}) {
     setCassettes(removeCassette)
   }
   
-  useEffect(() => {
-    console.log(cassettes);
-  }, [cassettes])
-  
-  
   return (
     <div className='list-container'>
       
       <div className='list-container-background'>
-      <SimpleBar className='list' >
-      <div className='call-form' onClick={()=> setOnForm(true)}>
-        <span className='call-form-icon'></span>
-        <span className='text-call-form'>Añade un cassette</span>
-      </div>
-        {cassettes.map(cassette => 
-          <Cassette 
-            songTitle={cassette.songTitle} 
-            key={cassette.id} 
-            id={cassette.id} 
-            cassetteSelected={cassetteSelected}
-            deleteCassette={deleteCassette}
-          />
-        )}
-      </SimpleBar>
+        <SimpleBar className='list' >
+        <div className={`call-form ${onForm ? 'no-events' : ''}`} onClick={()=> {setOnForm(true), setTransformForm(true)}}>
+          <span className='call-form-icon'></span>
+          <span className='text-call-form'>Añade un cassette</span>
+        </div>
+          {cassettes.map(cassette => 
+            <Cassette 
+              songTitle={cassette.songTitle} 
+              key={cassette.id} 
+              id={cassette.id} 
+              cassetteSelected={cassetteSelected}
+              deleteCassette={deleteCassette}
+            />
+          )}
+        </SimpleBar>
 
-      {tapeMessage ? 
-        <div 
-          className={`text-open-tape ${setTapeMessage ? 'tape-animation' : ''}`}
-          onAnimationEnd={()=> {setTapeMessage(false)}}
-        >DESLIZA LA TAPA HACIA ARRIBA PARA CAMBIAR DE CINTA</div> 
-      : ''}
+        {tapeMessage ? 
+          <div 
+            className={`text-open-tape ${setTapeMessage ? 'tape-animation' : ''}`}
+            onAnimationEnd={()=> {setTapeMessage(false)}}
+          >DESLIZA LA TAPA HACIA ARRIBA PARA CAMBIAR DE CINTA</div> 
+        : ''}
 
-      {onForm && (
-        <FormCassette formData={formData} closeForm={closeForm}></FormCassette>
-      )}
+        <div className={`transition-form ${transitionForm ? 'visible' : ''}`}>
+          {onForm && (
+            <FormCassette formData={formData} closeForm={closeForm}></FormCassette>
+          )}
+        </div>
       </div>
     
     </div>

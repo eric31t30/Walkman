@@ -57,9 +57,9 @@
 }
 
 .remove-button-img{
-    background-image: url(/icon/close.png);
-    width: 24px;
-    height: 24px;
+    background-image: url(/icon/close-pixel.png);
+    width: 32px;
+    height: 32px;
     scale: .8;
     filter: invert(100);
 }
