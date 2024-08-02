@@ -15,18 +15,15 @@
 
 .visible{
     opacity: 1;
-    top: 20%;
+    top: 15%;
     pointer-events: all;
 }
 
 .container-form{
     position: absolute;
-    left: 110%;
-    top: 20%;
-    z-index: 50;
     background-color: rgba(11, 11, 11, .3);
     width: 1000px;
-    height: 600px;
+    height: 650px;
     border-radius: 25px;
     overflow: hidden;
     padding: 20px;
@@ -50,7 +47,7 @@
     height: 100%;
     align-items: center;
     justify-content: center;
-    background-color: rgba(11, 11, 11, .4);
+    background-color: rgba(11, 11, 11, .5);
     border-radius: 25px;
 }
 
@@ -59,7 +56,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-direction: column;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
@@ -91,11 +88,25 @@
     font-size: 26px;
 }
 
+.hidden{
+    visibility: hidden;
+}
+
+.invalidate-title{
+    position: relative;
+    font-family: 'pixelmaster', sans-serif;
+    color: white;
+    font-size: 28px;
+    letter-spacing: 2px;
+    bottom: 20px;
+}
+
 .input-cassette-style{
     background-image: url(../assets/sprites/cassette.png);
     width: 214px;
     height: 136px;
     scale: 1.7;
+    margin-top: 20px;
 }
 
 .cont-text-input-cassette{
@@ -161,7 +172,7 @@
     filter: invert(100);
     position: relative;
     top: 140px;
-    opacity: .2;
+    opacity: .1;
 }
 
 .confirmed-file-active{
@@ -195,7 +206,7 @@
     font-family: 'pixelmaster', sans-serif;
     pointer-events: all;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 50px;
     border-top: 3px solid rgb(227, 170, 91);
     border-bottom: 8px solid rgb(174, 92, 29);
     letter-spacing: 2px;
@@ -203,6 +214,6 @@
 
 .button-form:active{
     background-color: rgb(150, 98, 27);
-    border-top: 3px solid rgb(196, 128, 33);
-    border-bottom: 8px solid rgb(130, 63, 11);
+    border-top: 3px solid rgb(164, 111, 36);
+    border-bottom: 7px solid rgb(130, 63, 11);
 }

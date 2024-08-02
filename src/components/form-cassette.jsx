@@ -8,25 +8,37 @@ export default function FormCassette({ formData , closeForm}) {
   const [confimedFile, setconfimedFile] = useState(false)
   const [fileName, setFileName] = useState('')
   const [onForm, setOnForm] = useState(false)
+  const [invalidateTitle, setInvalidateTitle] = useState(false)
+  const [invalidateFile, setInvalidateFile] = useState(false)
+   
+  const fileInputRef = useRef();
 
-	const fileInputRef = useRef();
-  
   const TitleChange = (e) => {
     setNewSongTitle(e.target.value);
   };
 
+  
+
   const FileChange = (e) => {
     setNewSongFile(e.target.files[0]);
     setconfimedFile(true)
+    setInvalidateFile(false)
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (newSongTitle.length == 0) {
+      setInvalidateTitle(true)
+    } 
+
+    if (!newSongFile) {
+      setInvalidateFile(true)
+    }
+    
     if (newSongTitle && newSongFile) {
       
       const audioUrl = URL.createObjectURL(newSongFile);
-
       
       const newCassette =({
         songTitle: newSongTitle,
@@ -62,13 +74,15 @@ export default function FormCassette({ formData , closeForm}) {
           <input 
             type="text" 
             className='input-text'
-            placeholder='nombre de la canción'
+            placeholder='Titulo de la canción'
             name='text-title-song'
             onChange={TitleChange}
             autoComplete='off'
             maxLength={12} 
+            value={newSongTitle}
           />
           <p className='notice'>un máximo de 12 letras</p>
+          <p className={`invalidate-title ${invalidateTitle ? '' : 'hidden'}`}>El titulo de la cancion es obligatorio.</p>
           <div className='input-cassette-style'>
             <div className='cont-text-input-cassette'>
               <div className='text-input-cassette'>{newSongTitle}</div>
@@ -85,6 +99,7 @@ export default function FormCassette({ formData , closeForm}) {
             <div className='cont-file-name'>
               <p className={`file-name`}>{fileName}</p>
             </div>
+            <p className={`invalidate-title ${invalidateFile ? '' : 'hidden'}`}>se debe seleccionar un archivo.</p>
           </div>
         
           <input 
