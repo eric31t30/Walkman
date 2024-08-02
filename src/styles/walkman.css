@@ -151,10 +151,6 @@
     position: absolute;
 }
 
-.si{
-    pointer-events: all;
-}
-
 .walkman-meal-decoration{
     position: absolute;
     background-image: url(../assets/sprites/walkman-deco-meal.png);
