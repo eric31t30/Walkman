@@ -168,7 +168,6 @@
     height: 136px;
     left: -300px;
     bottom: 160px;
-    background-image: url(../assets/sprites/cassette.png);
     scale: 2;
     transform-origin: bottom left;
     animation:  2.5s forwards;

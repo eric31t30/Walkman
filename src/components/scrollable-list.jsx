@@ -19,11 +19,11 @@ export default function ScrollableList({ cassetteClick, doorState}) {
 
   useEffect(() => {
     setCassettes([
-      { id: uuidv4(), songTitle: 'call me', audioUrl: '/songs/call me.mp3' },
-      { id: uuidv4(), songTitle: 'simpsonwave', audioUrl: '/songs/simpsonwave.mp3' },
-      { id: uuidv4(), songTitle: 'memory reboot', audioUrl: '/songs/memory reboot.mp3' },
-      { id: uuidv4(), songTitle: 'in a garden', audioUrl: '/songs/in a garden.mp3' },
-      { id: uuidv4(), songTitle: 'The synth wars', audioUrl: '/songs/The synth wars.mp3' },
+      { id: uuidv4(), songTitle: 'call me', audioUrl: '/songs/call me.mp3', background: 'cassette-10'},
+      { id: uuidv4(), songTitle: 'simpsonwave', audioUrl: '/songs/simpsonwave.mp3', background: 'cassette-2' },
+      { id: uuidv4(), songTitle: 'memory reboot', audioUrl: '/songs/memory reboot.mp3', background: 'cassette-6' },
+      { id: uuidv4(), songTitle: 'in a garden', audioUrl: '/songs/in a garden.mp3', background: 'cassette-5' },
+      { id: uuidv4(), songTitle: 'The synth wars', audioUrl: '/songs/The synth wars.mp3', background: 'cassette-1' },
     ]);
   }, []);
 
@@ -85,6 +85,7 @@ export default function ScrollableList({ cassetteClick, doorState}) {
               id={cassette.id} 
               cassetteSelected={cassetteSelected}
               deleteCassette={deleteCassette}
+              className={cassette.background}
             />
           )}
         </SimpleBar>
