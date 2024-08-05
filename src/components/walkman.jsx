@@ -229,7 +229,7 @@ export default function Walkman({ openDoor, receiveCassette }) {
 
           {cassetteAnimation 
             ? <div 
-                className={`cassette-actual ${cassetteAnimation ? 'cassette-animation-name' : ''}`}
+                className={`cassette-actual ${cassetteAnimation ? 'cassette-animation-name' : ''} ${cassetteActual.background}`}
                 id={cassetteActual.id} 
                 ref={cassetteSelected} 
                 onAnimationEnd={()=>{setAnimationEnd(true)}}

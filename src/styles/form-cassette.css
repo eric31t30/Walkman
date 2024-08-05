@@ -102,31 +102,52 @@
 }
 
 .input-cassette-style{
-    background-image: url(../assets/sprites/cassette.png);
     width: 214px;
     height: 136px;
     scale: 1.7;
     margin-top: 20px;
+    transition: all .3s ease;
 }
 
 .cont-text-input-cassette{
     position: absolute;
-    display: flex;
     left: 44px;
-    top: 18px;
+    top: 19px;
     width: 140px;
-    height: 22px;
+    height: 25px;
     overflow: hidden;
+    text-align: center;
+    align-items: center;
 }
 
 .text-input-cassette{
     font-family: "pixelmaster", sans-serif;
-    color: rgba(0, 0, 0, .9);
-    font-size: 26px;
+    font-size: 24px;
     letter-spacing: 2px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    z-index: 50;
+}
+
+.switch-cassette{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-image: url(/icon/switch-cassette.png);
+    filter: invert(100);
+    image-rendering: pixelated;
+    cursor: pointer;
+    pointer-events: all;
+    z-index: 50;
+}
+
+.switch-left{
+    left: -40px;
+    top: 40%;
+    transform: scaleX(-1);
+}
+
+.switch-right{
+    right: -40px;
+    top: 40%;
 }
 
 .cont-file{
