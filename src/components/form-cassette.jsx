@@ -3,13 +3,13 @@ import '../styles/form-cassette.css'
 
 export default function FormCassette({ formData , closeForm}) {
 
-	const [newSongTitle, setNewSongTitle] = useState('');
-  const [newSongFile, setNewSongFile] = useState(null);
-  const [confimedFile, setconfimedFile] = useState(false)
-  const [fileName, setFileName] = useState('')
-  const [onForm, setOnForm] = useState(false)
-  const [invalidateTitle, setInvalidateTitle] = useState(false)
-  const [invalidateFile, setInvalidateFile] = useState(false)
+	const [newSongTitle, setNewSongTitle] = useState('');           // titulo de la cancion importada
+  const [newSongFile, setNewSongFile] = useState(null);           // archivo importado
+  const [confimedFile, setconfimedFile] = useState(false)         // verifica si se importo un archivo del form
+  const [fileName, setFileName] = useState('')                    // muestra el nombre del archivo importado
+  const [onForm, setOnForm] = useState(false)                     // verifica el estado del formulario 
+  const [invalidateTitle, setInvalidateTitle] = useState(false)   // verifica si el input text no tiene un valor
+  const [invalidateFile, setInvalidateFile] = useState(false)     // verifica si el input file no tiene un valor
 
   const [cassetteStyle, setCassetteStyle] = useState(1);
 
@@ -18,8 +18,6 @@ export default function FormCassette({ formData , closeForm}) {
   const TitleChange = (e) => {
     setNewSongTitle(e.target.value);
   };
-
-  
 
   const FileChange = (e) => {
     setNewSongFile(e.target.files[0]);

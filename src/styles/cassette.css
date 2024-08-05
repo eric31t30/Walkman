@@ -85,6 +85,8 @@
     --cassette-7-neon: rgb(242, 21, 150);
 }
 
+/* estilos para cada cassette elegible */
+
 .cassette-1{
     background-image: url('../assets/sprites/cassettes/cassette-1.png');
     color: black;
