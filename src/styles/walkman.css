@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/lcd');
+
 .sprite-rendering{
     image-rendering: pixelated;
 }
@@ -105,6 +107,26 @@
     height: 48px;
     right: 52px;
     bottom: 12px;
+}
+
+.cont-time{
+    position: absolute;
+    background-color: rgb(80, 9, 9);
+    width: 80px;
+    height: 40px;
+    right: 110px;
+    top: 70px;
+    text-align: center;
+    align-content: center;
+    border: 3px solid rgb(41, 40, 40);
+    overflow: hidden;
+}
+
+.time{
+    font-family: 'LCDMono', sans-serif;
+    color: rgba(255, 0, 0, .6);
+    font-size: 1.16rem;
+    letter-spacing: 3px;
 }
 
 .cont-volume-button{

@@ -1,12 +1,7 @@
 import '../styles/cassette.css'
-import cassetteImage from '../assets/sprites/cassettes/cassette-10.png'
+
 
 export default function Cassette({ songTitle, id, cassetteSelected, deleteCassette, background, className}) {
-
-  
-  const style ={
-    backgroundImage: `url(${cassetteImage})`,
-  }
 
   return (
     <div className='cassette-cont'>

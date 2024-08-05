@@ -22,6 +22,8 @@ export default function Walkman({ openDoor, receiveCassette }) {
   const [switchCassette, setSwitchCassette] = useState(false)          // activa el sonido de cambio de cassette
   const [doorCont, setDoorCont] = useState(false);                     // verfica si la puerta se cerro por primera vez
   const [valueVolume, setvalueVolume] = useState(6);                   // volumen de la cancion (0 a 10)
+
+  const [playedSeconds, setPlayedSeconds] = useState(0);               // tiempo transcurrida del audio
   
   const playButton = useRef()
   const rewindButton = useRef()
@@ -208,6 +210,21 @@ export default function Walkman({ openDoor, receiveCassette }) {
     }
   };
 
+  // logica para el tiempo transcurrido
+
+  const time = (e) => {
+    if (e && typeof e.playedSeconds === 'number') {
+      setPlayedSeconds(Math.floor(e.playedSeconds));
+    }
+  };
+
+  const formatTime = (seconds) => {
+    if (typeof seconds !== 'number' || isNaN(seconds)) return '0:00';
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+  };
+
   return (
     <div className='container-walkman'>
       <div className='walkman-body sprite-rendering'>
@@ -283,6 +300,10 @@ export default function Walkman({ openDoor, receiveCassette }) {
           ref={pauseButton}
         ></div>
 
+        <div className='cont-time'>
+          <p className='time'>{formatTime(playedSeconds)}</p>
+        </div>
+
         <div className='buttons controls-buttons no-events'></div>
 
     
@@ -325,10 +346,11 @@ export default function Walkman({ openDoor, receiveCassette }) {
         ref={playerSongRef}
         url={song}
         playing={playing}
-        onEnded={()=> {setpickedButton(''), setPlaying(false);}}
+        onEnded={()=> {setpickedButton(''), setPlaying(false), pauseCapstan();}}
         width='0px'
         height='0px'
         volume={parseFloat(normalizeVolume(valueVolume))}
+        onProgress={time}
       />
 
       <ReactPlayer
