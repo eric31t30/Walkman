@@ -10,7 +10,9 @@ export default function FormCassette({ formData , closeForm}) {
   const [onForm, setOnForm] = useState(false)
   const [invalidateTitle, setInvalidateTitle] = useState(false)
   const [invalidateFile, setInvalidateFile] = useState(false)
-   
+
+  const [cassetteStyle, setCassetteStyle] = useState(1);
+
   const fileInputRef = useRef();
 
   const TitleChange = (e) => {
@@ -42,7 +44,8 @@ export default function FormCassette({ formData , closeForm}) {
       
       const newCassette =({
         songTitle: newSongTitle,
-        audioUrl
+        audioUrl,
+        background: `cassette-${cassetteStyle}`
       });
 
       
@@ -65,6 +68,25 @@ export default function FormCassette({ formData , closeForm}) {
     }
   }, [newSongFile])
 
+
+  const increment= ()=>{
+    
+    if(cassetteStyle == 10){
+      setCassetteStyle(1)
+    }else if (cassetteStyle) {
+      setCassetteStyle(prev=> prev + 1)
+    }
+    
+  }
+
+  const decrease= ()=>{
+    if(cassetteStyle == 1){
+      setCassetteStyle(10)
+    }else if (cassetteStyle) {
+      setCassetteStyle(prev=> prev - 1)
+    }
+    
+  }
   
   return (
     <div className='container-form'>
@@ -83,11 +105,12 @@ export default function FormCassette({ formData , closeForm}) {
           />
           <p className='notice'>un máximo de 12 letras</p>
           <p className={`invalidate-title ${invalidateTitle ? '' : 'hidden'}`}>El titulo de la cancion es obligatorio.</p>
-          <div className='input-cassette-style'>
+          <div className={`input-cassette-style cassette-${cassetteStyle}`}>
             <div className='cont-text-input-cassette'>
               <div className='text-input-cassette'>{newSongTitle}</div>
             </div>
-                
+            <span className='switch-cassette switch-left'  onClick={decrease}></span>
+            <span className='switch-cassette switch-right' onClick={increment}></span>
           </div>
           <button className='button-form'>AGREGAR</button>
         </div>
