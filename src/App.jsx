@@ -38,10 +38,11 @@ function App() {
       <div className='container-app background'>
         <ScrollableList cassetteClick={cassetteClick} doorState={openDoor}></ScrollableList>
         <Walkman openDoor={openDoor} receiveCassette={cassetteSend}></Walkman>
-
         <span className='border-deco border-top'></span>
         <span className='border-deco border-bottom'></span>
       </div>
+
+      
     </DndContext>
   )
 }

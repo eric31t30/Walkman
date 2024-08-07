@@ -4,8 +4,8 @@ import '../styles/cassette.css'
 export default function Cassette({ songTitle, id, cassetteSelected, deleteCassette, background, className}) {
 
   return (
-    <div className='cassette-cont'>
-      <div className={`cassette list-element ${className}`} 
+    <div className='cassette-cont list-element'>
+      <div className={`cassette  ${className}`} 
         onClick={() => {cassetteSelected(id)}}
         id={id} 
         style={background}>

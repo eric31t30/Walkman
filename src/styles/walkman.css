@@ -148,6 +148,7 @@
     background-image: url(../assets/sprites/volume-button.png);
     background-color: #ffffff00;
     bottom: -7px;
+    image-rendering: pixelated;
 }
 
 .rc-slider-handle:focus {
@@ -225,3 +226,70 @@
     
 }
 
+@media (max-width: 719px){
+    
+    .container-walkman{
+        min-height: 50vh;
+        width: 100%;
+        overflow: hidden;
+        
+    }
+
+    .media-center{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .walkman-body{
+        position: absolute;
+        right: auto;
+        scale: .350;
+        margin-top: 100px;
+    }
+    
+}
+
+
+@media (min-width: 720px) and (max-width:1299px){
+    .container-walkman{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 50vh;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .media-center{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .walkman-body{
+       position: absolute;  
+       right: auto;
+       scale: .7;
+       margin-top: 100px;
+    }
+    
+    
+}
+
+@media (min-width: 1300px) and (max-width: 1919px){
+    .walkman-body{
+        scale: .8;
+    }
+}
+
+
+@media (min-width: 1920px){
+  
+}
