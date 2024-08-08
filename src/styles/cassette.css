@@ -1,21 +1,24 @@
+:root {
+    --cassette-7-neon: rgb(242, 21, 150);
+}
+
 .cassette-cont{
     position: relative;
 }
 
+.list-element {
+    margin: 100px 0;
+    margin-left: 160px;
+}
+
 .cassette{
+    position: relative;
     width: 214px;
     height: 136px;
     image-rendering: pixelated;
-    scale: 1.3;
     cursor: pointer;
     pointer-events: all;
     z-index: 1;
-}
-
-.list-element {
-    margin: 100px 0;
-    margin-left: 140px;
-    position: relative;
 }
 
 .song-title{
@@ -34,9 +37,9 @@
 .remove-button{
     position: absolute;
     width: 0px;
-    height: 80%;
-    left: 120px;
-    top: 10%;
+    height: 60%;
+    left: 0px;
+    top: 20%;
     image-rendering: auto;
     background-color: rgba(0, 0, 0, .5);
     display: flex;
@@ -55,34 +58,29 @@
 }
 
 .remove-button-img{
+    image-rendering: pixelated;
     background-image: url(/icon/close-pixel.png);
     width: 32px;
     height: 32px;
-    scale: .8;
     filter: invert(100);
 }
 
 .cassette:hover + .remove-button{
     opacity: 1;
     visibility: visible;
-    left: 50px;
-    width: 70px;
+    left: -50px;
+    width: 50px;
 }
 
 .remove-button:hover{
     opacity: 1;
     visibility: visible;
-    left: 50px;
-    width: 70px;
+    left: -50px;
+    width: 50px;
 }
 
 .on-dragging{
     transition: transform .1s ease;
-}
-
-
-:root {
-    --cassette-7-neon: rgb(242, 21, 150);
 }
 
 /* estilos para cada cassette elegible */
@@ -142,4 +140,66 @@
 .cassette-10{
     background-image: url('../assets/sprites/cassettes/cassette-10.png');
     color: rgb(10, 88, 142);
+}
+
+
+@media (max-width: 719px){
+
+    
+}
+
+@media (max-width: 719px){
+
+    .cassette-cont{
+        scale: .7;
+    }
+
+    
+    
+    .list-element{
+        display: inline-block;
+        margin: 0px;
+    }
+
+   
+    
+}
+
+@media (min-width: 720px) and (max-width:1299px){
+
+   
+    .list-element{
+        display: inline-block;
+        margin: 10px 0;
+        margin-left: 90px;
+    }
+
+    .cassette:hover + .remove-button{
+        left: -60px;
+        width: 70px;
+    }
+
+    .remove-button:hover{
+        left: -60px;
+        width: 70px;
+    }
+}
+
+@media (min-width: 1300px) and (max-width: 1919px){
+    .cassette-cont{
+        scale: .9;
+    }
+
+    .list-element {
+        margin: 100px 0;
+        margin-left: 70px;
+    }
+
+}
+
+
+@media (min-width: 1920px){
+  .cassette-cont{
+    scale: 1.3;
+  }
 }

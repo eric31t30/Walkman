@@ -70,41 +70,44 @@ export default function ScrollableList({ cassetteClick, doorState}) {
   }
   
   return (
+    <>
     <div className='list-container'>
       
       <div className='list-container-background'>
-        <SimpleBar className='list' >
-        <div className={`call-form ${onForm ? 'no-events' : ''}`} onClick={()=> {setOnForm(true), setTransformForm(true)}}>
-          <span className='call-form-icon'></span>
-          <span className='text-call-form'>Añade un cassette</span>
-        </div>
-          {cassettes.map(cassette => 
-            <Cassette 
-              songTitle={cassette.songTitle} 
-              key={cassette.id} 
-              id={cassette.id} 
-              cassetteSelected={cassetteSelected}
-              deleteCassette={deleteCassette}
-              className={cassette.background}
-            />
-          )}
+        <SimpleBar className='list' forceVisible="x" >
+          <div className='horizontal-bar'>
+            <div className={`call-form ${onForm ? 'no-events' : ''}`} onClick={()=> {setOnForm(true), setTransformForm(true)}}>
+              <span className='call-form-icon'></span>
+              <span className='text-call-form'>Añade un cassette</span>
+            </div>
+            {cassettes.map(cassette => 
+              <Cassette 
+                songTitle={cassette.songTitle} 
+                key={cassette.id} 
+                id={cassette.id} 
+                cassetteSelected={cassetteSelected}
+                deleteCassette={deleteCassette}
+                className={cassette.background}
+              />
+            )}
+          </div>
         </SimpleBar>
+    </div>
+    </div>
 
-        {tapeMessage ? 
+    {tapeMessage ? 
           <div 
             className={`text-open-tape ${setTapeMessage ? 'tape-animation' : ''}`}
             onAnimationEnd={()=> {setTapeMessage(false)}}
           >DESLIZA LA TAPA HACIA ARRIBA PARA CAMBIAR DE CINTA</div> 
-        : ''}
+      : ''}
 
-        <div className={`transition-form ${transitionForm ? 'visible' : ''}`}>
+    <div className={`transition-form ${transitionForm ? 'visible' : ''}`}>
           {onForm && (
             <FormCassette formData={formData} closeForm={closeForm}></FormCassette>
           )}
-        </div>
-      </div>
-    
     </div>
+    </>
   );
 }
 

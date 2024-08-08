@@ -32,7 +32,7 @@ html, body {
 
 .border-deco{
   position: absolute;
-  min-width: 100vw;
+  width: 100%;
   height: 148px;
   background-repeat: repeat-x;
   pointer-events: none;
@@ -49,4 +49,53 @@ html, body {
   background-image: url(./assets/sprites/border-deco-bottom.png);
   left: 0px;
   bottom: 0px;
+}
+
+
+@media (max-width: 719px){
+
+  .container-app{
+    flex-direction: column-reverse;
+  }
+
+  .background{
+    background-image: url(./assets/sprites/meal-background-movil.png);
+  }
+
+  .border-deco{
+    height: 74px;
+  }
+
+  .border-top{
+    background-image: url(./assets/sprites/border-deco-top-movil.png);
+  }
+  
+  .border-bottom{
+    background-image: url(./assets/sprites/border-deco-bottom-movil.png);
+  }
+}
+
+@media (min-width: 720px) and (max-width:1299px){
+
+  body{
+    overflow: hidden;
+  }
+
+  .container-app{
+    flex-direction: column-reverse;
+  }
+}
+
+@media (min-width: 1300px) and (max-width: 1919px){
+  .border-deco{
+    height: 74px;
+  }
+
+  .border-top{
+    background-image: url(./assets/sprites/border-deco-top-movil.png);
+  }
+  
+  .border-bottom{
+    background-image: url(./assets/sprites/border-deco-bottom-movil.png);
+  }
 }

@@ -11,23 +11,15 @@
 }
 
 .list-container-background{
-    position: absolute;
-    left: 0;
-    top: 0;
     background-color: rgba(0, 0, 0, .3);
-    width: 24%;
-    min-height: 100vh;
+    width: 54%;
     border-right: 5px solid rgb(94, 94, 94);
+    min-height: 100vh
 }
 
 .list {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
     max-height: 100vh;
-    list-style-type: none;
-    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .call-form{
@@ -79,7 +71,7 @@
     width: 600px;
     height: 50px;
     top: 80px;
-    left: 150%;
+    left: 40%;
     color: white;
     z-index: 100;
     border-radius: 10px;
@@ -109,3 +101,173 @@
     }
 }
 
+
+
+@media (max-width: 719px){
+    .list-container{
+        position: relative;
+        width: 100%;
+        min-height: 50vh;
+    }
+
+    .list-container-background{
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        border-right: 0px;
+        border-top: 4px solid rgb(94, 94, 94);
+        width: 100%;
+        height: 50%;
+        min-height: 0vh;
+    }
+
+    .list{
+        max-height: 50vh;
+        height: 80%;
+        width: 100vw;
+        margin: 20px 0px;
+        overflow-y: hidden;
+    }
+
+    .horizontal-bar{
+        white-space: nowrap;
+        padding-top: 0px;
+        height: 100%;
+        width: 100%;
+        gap: 0px 0px;
+    }
+
+    .call-form{
+        display: inline-block;
+        margin: 0px 50px;
+        margin-bottom: 25px;
+        width: 100px;
+        height: 90px;
+        margin-left: 20px;
+        text-align: center;
+        align-content: center;
+    }
+
+    .call-form-icon{
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        left: 33%;
+        top: 33%;
+        scale: .8;
+    }
+
+    .text-call-form{
+        font-size: 9px;
+        left: 5px;
+        bottom: 10px;
+    }
+
+    .text-open-tape{
+        font-size: 8px;
+        width: 300px;
+        height: 25px;
+        top: 70%;
+        left: 10%;
+    }
+    
+}
+
+
+@media (min-width: 720px) and (max-width:1299px){
+    
+    .list-container{
+        position: relative;
+        width: 100%;
+        min-height: 50vh;
+    }
+
+    .list-container-background{
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        border-right: 0px;
+        border-top: 4px solid rgb(94, 94, 94);
+        width: 100%;
+        height: 50%;
+        min-height: 0vh;
+    }
+
+    .list{
+        max-height: 50vh;
+        height: 80%;
+        width: 100vw;
+        margin-top: 20px;
+    }
+
+    .horizontal-bar{
+        white-space: nowrap;
+        padding-top: 30px;
+        height: 100%;
+        width: 100%;
+        gap: 10px 100px;
+    }
+
+    .call-form{
+        display: inline-block;
+        margin: 10px 0;
+        margin-left: 0px;
+        width: 150px;
+        height: 137px;
+        margin-left: 20px;
+        text-align: center;
+        align-content: center;
+    }
+
+    .call-form-icon{
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        left: 40%;
+        top: 40%;
+    }
+
+    .text-call-form{
+        font-size: 15px;
+        left: 10px;
+        bottom: 20px;
+    }
+
+    .text-open-tape{
+        font-size: 16px;
+        width: 600px;
+        height: 35px;
+        top: 70%;
+        left: 10%;
+    }
+
+    
+    
+}
+
+@media (min-width: 1300px) and (max-width: 1919px){
+
+    .list-container-background{
+        width: 60%;
+    }
+    
+    .call-form{
+        width: 170px;
+        height: 70px;
+        margin-left: 90px;
+    }
+
+    .call-form-icon{
+        scale: .8;
+    }
+
+    .text-call-form{
+        font-size: 13px;
+        left: 24px;
+    }
+
+    .text-open-tape{
+        font-size: 17px;
+        left: 40%;
+    }
+}

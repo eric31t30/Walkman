@@ -227,8 +227,9 @@ export default function Walkman({ openDoor, receiveCassette }) {
 
   return (
     <div className='container-walkman'>
+      <div className='media-center'>
+        <div className='prueba'></div>
       <div className='walkman-body sprite-rendering'>
-
         <div className='cont-capstan' ref={capstanRef}>
           <div className='capstan'></div>
         </div>
@@ -381,6 +382,8 @@ export default function Walkman({ openDoor, receiveCassette }) {
         width='0px'
         height='0px'
         />
+
+  </div>
       
     </div>
   )

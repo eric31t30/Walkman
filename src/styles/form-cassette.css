@@ -6,7 +6,7 @@
 .transition-form{
     transition: all .8s ease;
     position: absolute;
-    left: 110%;
+    left: 30%;
     top: 0%;
     opacity: 0;
     z-index: 50;
@@ -237,4 +237,59 @@
     background-color: rgb(150, 98, 27);
     border-top: 3px solid rgb(164, 111, 36);
     border-bottom: 7px solid rgb(130, 63, 11);
+}
+
+
+@media (max-width: 719px){
+    
+    .transition-form{
+        width: 100%;
+        height: 100vh;
+        left: 0%;
+        top: 0%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .container-form{
+        scale: .3;
+        margin-bottom: 100px;
+    }
+    
+}
+
+@media (min-width: 720px) and (max-width:1299px){
+    .transition-form{
+        width: 100%;
+        height: 100vh;
+        left: 0%;
+        top: 0%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container-form{
+        scale: .7;
+        margin-bottom: 200px;
+    }
+}
+
+@media (min-width: 1300px) and (max-width: 1919px){
+    .transition-form{
+        left: 30%;
+        top: 20%;
+    }
+
+    .container-form{
+        scale: .7;
+        transform-origin: left top;
+    }
+}
+
+
+@media (min-width: 1920px){
+  
 }
