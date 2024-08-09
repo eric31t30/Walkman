@@ -142,27 +142,16 @@
     color: rgb(10, 88, 142);
 }
 
-
-@media (max-width: 719px){
-
-    
-}
-
 @media (max-width: 719px){
 
     .cassette-cont{
         scale: .7;
     }
 
-    
-    
     .list-element{
         display: inline-block;
         margin: 0px;
     }
-
-   
-    
 }
 
 @media (min-width: 720px) and (max-width:1299px){

@@ -33,7 +33,7 @@
     cursor: pointer;
     pointer-events: all;
     margin: 70px 0;
-    margin-left: 100px;
+    margin-left: 110px;
     border-radius: 10px;
     border: solid 2px rgba(255, 255, 255, .7);
 }
@@ -240,9 +240,6 @@
         top: 70%;
         left: 10%;
     }
-
-    
-    
 }
 
 @media (min-width: 1300px) and (max-width: 1919px){

@@ -252,7 +252,6 @@
         align-items: center;
     }
 
-
     .container-form{
         scale: .3;
         margin-bottom: 100px;
@@ -287,9 +286,4 @@
         scale: .7;
         transform-origin: left top;
     }
-}
-
-
-@media (min-width: 1920px){
-  
 }

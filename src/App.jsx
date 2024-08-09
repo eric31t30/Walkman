@@ -19,11 +19,15 @@ function App() {
 
     if (over && over.id === 'droppable-cassette-door') {
       setOpenDoor(true)
-    }else{
+      }else{
       setOpenDoor(false)
     }
   };
 
+  const open= (e)=>{
+    setOpenDoor(e)
+  }
+  
   const cassetteClick = (data)=> {
     setCassetteOnStage(data)
   }
@@ -37,7 +41,7 @@ function App() {
     <DndContext onDragEnd={handleDragEnd} modifiers={[restrictToParentElement]}>
       <div className='container-app background'>
         <ScrollableList cassetteClick={cassetteClick} doorState={openDoor}></ScrollableList>
-        <Walkman openDoor={openDoor} receiveCassette={cassetteSend}></Walkman>
+        <Walkman openDoor={openDoor} receiveCassette={cassetteSend} open={open}></Walkman>
         <span className='border-deco border-top'></span>
         <span className='border-deco border-bottom'></span>
       </div>
