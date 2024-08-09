@@ -15,7 +15,7 @@ export default function ScrollableList({ cassetteClick, doorState}) {
   const [onForm, setOnForm] = useState('')                  // activa el formulario
   const [transitionForm, setTransformForm] = useState('')   // activa la transicion del formulario
 
-  const [cassettes, setCassettes] = useState([]);
+  const [cassettes, setCassettes] = useState([]);           // array que guarda los cassettes
 
   useEffect(() => {
     setCassettes([

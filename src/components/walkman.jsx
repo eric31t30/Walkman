@@ -1,5 +1,5 @@
 import '../styles/walkman.css'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useDebugValue } from 'react'
 import { useDroppable } from '@dnd-kit/core'
 import { useDraggable } from '@dnd-kit/core'
 import ReactPlayer from 'react-player/file'
@@ -8,7 +8,7 @@ import 'rc-slider/assets/index.css';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-export default function Walkman({ openDoor, receiveCassette }) {
+export default function Walkman({ openDoor, receiveCassette, open }) {
 
   const [pickedButton, setpickedButton] = useState('')                 // verfica cual es el boton seleccionado 
   const [cassetteActual, setCassetteActual] = useState('')             // tiene el valor de cassette elegido
@@ -22,6 +22,8 @@ export default function Walkman({ openDoor, receiveCassette }) {
   const [switchCassette, setSwitchCassette] = useState(false)          // activa el sonido de cambio de cassette
   const [doorCont, setDoorCont] = useState(false);                     // verfica si la puerta se cerro por primera vez
   const [valueVolume, setvalueVolume] = useState(6);                   // volumen de la cancion (0 a 10)
+  const [tapeButton, setTapeButton] = useState(openDoor)               // estado para abrir la puerta a traves del boton
+  const [tapeButtonEvent, setTapeButtonEvent] = useState(true)         // niega la interaccion al clickear el boton de la puerta
 
   const [playedSeconds, setPlayedSeconds] = useState(0);               // tiempo transcurrida del audio
   
@@ -142,6 +144,8 @@ export default function Walkman({ openDoor, receiveCassette }) {
     if (openDoor == false) {
       setDoorCont(true);
     }
+
+    setTapeButton(openDoor)
   }, [openDoor]);
 
   useEffect(() => {
@@ -225,6 +229,23 @@ export default function Walkman({ openDoor, receiveCassette }) {
     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
+  // logica para abrir la puerta de cassette con el boton
+
+  useEffect(() => {
+    
+    open(tapeButton)
+
+  }, [tapeButton])
+
+  const noEvents =()=>{
+    setTapeButtonEvent(false)
+
+
+    setTimeout(() => {
+      setTapeButtonEvent(true)
+    }, 1500);
+  }
+  
   return (
     <div className='container-walkman'>
       <div className='media-center'>
@@ -235,6 +256,10 @@ export default function Walkman({ openDoor, receiveCassette }) {
         </div>
 
         <div className='door-colision' ref={setDroppableNodeRef} ></div>
+
+        <div className={`tape-button buttons ${tapeButtonEvent ? '' : 'no-events'}`} 
+          onClick={()=>{ setTapeButton(prevState => !prevState), noEvents()}} 
+        ></div>
 
         <div className='container-door'>
           <div className={`cassette-door  ${openDoor ? 'cassette-door-open' : ''} ${animationEnd ? '' : 'no-events'}`} 

@@ -156,6 +156,21 @@
     box-shadow: none;
 }
 
+.tape-button{
+    background-image: url(../assets/sprites/tape-button.png);
+    right: 0px;
+    top: 64px;
+    width: 8px;
+    height: 56px;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.tape-button:active{
+    background-position: -4px 0px;
+    filter: brightness(.7);
+}
+
 .button-press{
     background-position: 0px -8px;
     filter: brightness(.7);
@@ -287,9 +302,4 @@
     .walkman-body{
         scale: .8;
     }
-}
-
-
-@media (min-width: 1920px){
-  
 }
