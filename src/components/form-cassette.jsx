@@ -5,7 +5,7 @@ export default function FormCassette({ formData , closeForm}) {
 
 	const [newSongTitle, setNewSongTitle] = useState('');           // titulo de la cancion importada
   const [newSongFile, setNewSongFile] = useState(null);           // archivo importado
-  const [confimedFile, setconfimedFile] = useState(false)         // verifica si se importo un archivo del form
+  const [confirmedFile, setconfirmedFile] = useState(false)         // verifica si se importo un archivo del form
   const [fileName, setFileName] = useState('')                    // muestra el nombre del archivo importado
   const [onForm, setOnForm] = useState(false)                     // verifica el estado del formulario 
   const [invalidateTitle, setInvalidateTitle] = useState(false)   // verifica si el input text no tiene un valor
@@ -21,7 +21,7 @@ export default function FormCassette({ formData , closeForm}) {
 
   const FileChange = (e) => {
     setNewSongFile(e.target.files[0]);
-    setconfimedFile(true)
+    setconfirmedFile(true)
     setInvalidateFile(false)
   };
 
@@ -50,7 +50,7 @@ export default function FormCassette({ formData , closeForm}) {
       setNewSongTitle('');
       setNewSongFile(null);
       setFileName('')
-      setconfimedFile(false)
+      setconfirmedFile(false)
       
       formData(newCassette)
     }
@@ -85,7 +85,7 @@ export default function FormCassette({ formData , closeForm}) {
     }
     
   }
-  
+
   return (
     <div className='container-form'>
       <div className='close-form' onClick={()=> {closeForm(onForm)}}></div>
@@ -116,7 +116,7 @@ export default function FormCassette({ formData , closeForm}) {
           <div className='cont-file'>
             <div className='file-button' onClick={formClick}>
             <div className='file-button-img'></div>
-            <div className={`confirmed-file ${confimedFile ? 'confirmed-file-active' : ''}`}></div>
+            <div className={`confirmed-file ${confirmedFile ? 'confirmed-file-active' : ''}`}></div>
             <div className='cont-file-name'>
               <p className={`file-name`}>{fileName}</p>
             </div>
