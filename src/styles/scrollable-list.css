@@ -102,6 +102,53 @@
 }
 
 
+.restore-storage{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 400px;
+    height: 60px;
+    z-index: 25;
+    margin: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.restore-storage-img{
+    background-image: url(../assets/sprites/restore-button.png);
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    width: 56px;
+    height: 60px;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.restore-storage-text{
+    color: white;
+    font-family: 'pixelmaster', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    opacity: 0;
+    transition: all .5s ease;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 3px 12px;
+    pointer-events: none;
+    border-radius: 5px;
+}
+
+.restore-storage-img:active{
+    background-position: 0px -2px;
+    filter: brightness(.9);
+}
+
+
+.restore-storage-img:hover ~ .restore-storage-text{
+    opacity: 1;
+}
+
 
 @media (max-width: 719px){
     .list-container{
@@ -169,6 +216,20 @@
         height: 25px;
         top: 70%;
         left: 10%;
+    }
+
+    .restore-storage{
+        width: 300px;
+        justify-content: end;
+        margin: 10px;
+    }
+
+    .restore-storage-img{
+        scale: .4;
+    }
+
+    .restore-storage-text{
+        font-size: 20px;
     }
     
 }
@@ -239,6 +300,20 @@
         height: 35px;
         top: 70%;
         left: 10%;
+    }
+
+    .restore-storage{
+        justify-content: end;
+        margin: 20px;
+    }
+
+    .restore-storage-img{
+        scale: .8;
+    }
+
+    .restore-storage-text{
+        font-size: 30px;
+        margin-right: 20px;
     }
 }
 
