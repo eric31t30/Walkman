@@ -20,7 +20,7 @@ Aplicación web que simula un walkman clásico con características interactivas
 - **React** y **CSS**: Para la estructura, diseño y funcionalidad del slider.
 - **React Player**: Para la reproducción de sonidos.
 
-Puedes ver la demostración en **GitHub Pages**.
+Puedes ver la demostración en **[Netlify](https://eric-walkman.netlify.app/)**.
 
 <div align="center">
     <img src="/public/demo-imng.png" alt="Demo de Walkman">
