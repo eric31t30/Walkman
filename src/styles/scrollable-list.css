@@ -149,12 +149,12 @@
     opacity: 1;
 }
 
-
 @media (max-width: 719px){
     .list-container{
         position: relative;
+        min-height: auto;
+        height: 30%;
         width: 100%;
-        min-height: 50vh;
     }
 
     .list-container-background{
@@ -164,16 +164,28 @@
         border-right: 0px;
         border-top: 4px solid rgb(94, 94, 94);
         width: 100%;
-        height: 50%;
-        min-height: 0vh;
+        height: 100%;
+        min-height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cub{
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
     }
 
     .list{
+        display: flex;
         max-height: 50vh;
         height: 80%;
         width: 100vw;
         margin: 20px 0px;
         overflow-y: hidden;
+       justify-content: center !important;
+       align-items: center !important ;
     }
 
     .horizontal-bar{
@@ -214,7 +226,7 @@
         font-size: 8px;
         width: 300px;
         height: 25px;
-        top: 70%;
+        top: 65%;
         left: 10%;
     }
 
@@ -231,16 +243,15 @@
     .restore-storage-text{
         font-size: 20px;
     }
-    
 }
-
 
 @media (min-width: 720px) and (max-width:1299px){
     
     .list-container{
         position: relative;
+        min-height: auto;
+        height: 40%;
         width: 100%;
-        min-height: 50vh;
     }
 
     .list-container-background{
@@ -262,7 +273,7 @@
         max-height: 50vh;
         height: 80%;
         width: 100vw;
-        margin-top: 20px;
+        margin-top: 50px;
         justify-content: center !important;
         align-items: center !important;
     }
@@ -304,7 +315,7 @@
         font-size: 16px;
         width: 600px;
         height: 35px;
-        top: 70%;
+        top: 60%;
         left: 10%;
     }
 
@@ -341,6 +352,17 @@
         width: 100%;
         margin-top: 0px;
     }
+
+    .call-form{
+        display: inline-block;
+        margin: 10px 0;
+        margin-left: 20px;
+        margin-bottom: 30px;
+        width: 120px;
+        height: 100px;
+        text-align: center;
+        align-content: center;
+    }
 }
 
 @media (min-width: 1300px) and (max-width: 1919px){
@@ -368,4 +390,4 @@
         font-size: 17px;
         left: 40%;
     }
-}
+} 

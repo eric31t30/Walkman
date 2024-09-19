@@ -40,13 +40,13 @@ function App() {
   
     <DndContext onDragEnd={handleDragEnd} modifiers={[restrictToParentElement]}>
       <div className='container-app background'>
+       
         <ScrollableList cassetteClick={cassetteClick} doorState={openDoor}></ScrollableList>
         <Walkman openDoor={openDoor} receiveCassette={cassetteSend} open={open}></Walkman>
         <span className='border-deco border-top'></span>
         <span className='border-deco border-bottom'></span>
-      </div>
-
       
+      </div>
     </DndContext>
   )
 }
