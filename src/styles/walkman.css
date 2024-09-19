@@ -245,10 +245,9 @@
 @media (max-width: 719px){
     
     .container-walkman{
-        min-height: 50vh;
+        min-height: auto;
+        height: 70%;
         width: 100%;
-        overflow: hidden;
-        
     }
 
     .media-center{
@@ -269,15 +268,15 @@
     
 }
 
-
 @media (min-width: 720px) and (max-width:1299px){
     .container-walkman{
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 50vh;
-        width: 100%;
         overflow: hidden;
+        min-height: auto;
+        height: 60%;
+        width: 100%;
     }
 
     .media-center{
@@ -293,9 +292,10 @@
        position: absolute;  
        right: auto;
        scale: .7;
-       margin-top: 100px;
+       margin-top: 180px;
     }
 }
+
 
 @media (min-aspect-ratio: 4/3) and (max-width: 1280px) {
 
@@ -304,14 +304,13 @@
     }
     
     .walkman-body{
-        scale: .650;
-        margin-top: 0px;
+        scale: .45;
+        margin-top: 100px;
     }
 }
-
 
 @media (min-width: 1300px) and (max-width: 1919px){
     .walkman-body{
         scale: .8;
     }
-}
+} 

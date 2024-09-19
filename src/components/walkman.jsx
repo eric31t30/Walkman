@@ -249,8 +249,7 @@ export default function Walkman({ openDoor, receiveCassette, open }) {
   return (
     <div className='container-walkman'>
       <div className='media-center'>
-        <div className='prueba'></div>
-      <div className='walkman-body sprite-rendering'>
+        <div className='walkman-body sprite-rendering'>
         <div className='cont-capstan' ref={capstanRef}>
           <div className='capstan'></div>
         </div>
@@ -258,157 +257,152 @@ export default function Walkman({ openDoor, receiveCassette, open }) {
         <div className='door-colision' ref={setDroppableNodeRef} ></div>
 
         <div className={`tape-button buttons ${tapeButtonEvent ? '' : 'no-events'}`} 
-          onClick={()=>{ setTapeButton(prevState => !prevState), noEvents()}} 
-        ></div>
+          onClick={()=>{ setTapeButton(prevState => !prevState), noEvents()}} >
+        </div>
 
-        <div className='container-door'>
-          <div className={`cassette-door  ${openDoor ? 'cassette-door-open' : ''} ${animationEnd ? '' : 'no-events'}`} 
-            ref={setDraggableNodeRef} 
-            style={draggableStyle}
-            {...attributes}
-            {...listeners}
-            
+          <div className='container-door'>
+            <div className={`cassette-door  ${openDoor ? 'cassette-door-open' : ''} ${animationEnd ? '' : 'no-events'}`} 
+              ref={setDraggableNodeRef} 
+              style={draggableStyle}
+              {...attributes}
+              {...listeners}
+            >
+            </div>
+
+            {cassetteAnimation 
+              ? <div 
+                  className={`cassette-actual ${cassetteAnimation ? 'cassette-animation-name' : ''} ${cassetteActual.background}`}
+                  id={cassetteActual.id} 
+                  ref={cassetteSelected} 
+                  onAnimationEnd={()=>{setAnimationEnd(true)}}
+                >
+
+                  <p className='song-title text-cassette'>{cassetteActual.songTitle}</p>
+                </div>
+
+              :''
+            }
+          </div>
+          
+          <div 
+            className={`buttons play-button ${pickedButton === 'play-button' ? 'button-press' : ''}`} 
+            onClick={(event) => {
+              {
+                pressedButton(event),
+                setPlaying(true),
+                setButtonPress(true),
+                playCapstan()
+              }
+            }}  
+            ref={playButton}
           ></div>
 
-          {cassetteAnimation 
-            ? <div 
-                className={`cassette-actual ${cassetteAnimation ? 'cassette-animation-name' : ''} ${cassetteActual.background}`}
-                id={cassetteActual.id} 
-                ref={cassetteSelected} 
-                onAnimationEnd={()=>{setAnimationEnd(true)}}
-              >
-                
-                <p className='song-title text-cassette'>{cassetteActual.songTitle}</p>
-              </div>
-            
-            :''
-          }
-        </div>
-        
-        <div 
-          className={`buttons play-button ${pickedButton === 'play-button' ? 'button-press' : ''}`} 
-          onClick={(event) => {
-            {
-              pressedButton(event),
-              setPlaying(true),
-              setButtonPress(true),
-              playCapstan()
-            }
-          }}  
-          ref={playButton}
-        ></div>
+          <div 
+            className={`buttons rewind-button ${pickedButton === 'rewind-button' ? 'button-press' : ''}`}  
+            onClick={(event) => {
+              {
+                pressedButton(event),
+                restartAudio(),
+                setButtonPress(true),
+                pauseCapstan()
+              }
+            }} 
+            ref={rewindButton}
+          ></div>
 
-        
+          <div 
+            className={`buttons pause-button ${pickedButton === 'pause-button' ? 'button-press' : ''}`}  
+            onClick={(event) => {
+              {
+                pressedButton(event),
+                setPlaying(false),
+                setButtonPress(true),
+                pauseCapstan()
+              }
+            }} 
+            ref={pauseButton}
+          ></div>
 
-        <div 
-          className={`buttons rewind-button ${pickedButton === 'rewind-button' ? 'button-press' : ''}`}  
-          onClick={(event) => {
-            {
-              pressedButton(event),
-              restartAudio(),
-              setButtonPress(true),
-              pauseCapstan()
-            }
-          }} 
-          ref={rewindButton}
-        ></div>
-
-        <div 
-          className={`buttons pause-button ${pickedButton === 'pause-button' ? 'button-press' : ''}`}  
-          onClick={(event) => {
-            {
-              pressedButton(event),
-              setPlaying(false),
-              setButtonPress(true),
-              pauseCapstan()
-            }
-          }} 
-          ref={pauseButton}
-        ></div>
-
-        <div className='cont-time'>
-          <p className='time'>{formatTime(playedSeconds)}</p>
-        </div>
-
-        <div className='buttons controls-buttons no-events'></div>
-
-    
-          <div className='cont-volume-button'>
-            <Slider
-              className='volume-button'
-              min={1}
-              max={10}
-              step={1}
-              defaultValue={valueVolume}
-              onChange={handleChange}
-              styles={{
-                handle: {
-                  height: 28,
-                  width: 140,
-                  borderRadius: 0,
-                  opacity: 1,
-                  boxSizing: 'border-box',
-                  border: 'none',
-                  boxShadow: 'none',
-                  backgroundColor: 'transparent'
-                },
-                track:{
-                  backgroundColor: 'transparent'
-                },
-                rail:{
-                  backgroundColor: 'transparent'
-                }
-                
-              }}
-            />
+          <div className='cont-time'>
+            <p className='time'>{formatTime(playedSeconds)}</p>
           </div>
-        
-        
-        <span className='walkman-meal-decoration sprite-rendering'></span>
+
+          <div className='buttons controls-buttons no-events'></div>
+          
+          <div className='cont-volume-button'>
+              <Slider
+                className='volume-button'
+                min={1}
+                max={10}
+                step={1}
+                defaultValue={valueVolume}
+                onChange={handleChange}
+                styles={{
+                  handle: {
+                    height: 28,
+                    width: 140,
+                    borderRadius: 0,
+                    opacity: 1,
+                    boxSizing: 'border-box',
+                    border: 'none',
+                    boxShadow: 'none',
+                    backgroundColor: 'transparent'
+                  },
+                  track:{
+                    backgroundColor: 'transparent'
+                  },
+                  rail:{
+                    backgroundColor: 'transparent'
+                  }
+
+                }}
+              />
+            </div>
+          <span className='walkman-meal-decoration sprite-rendering'></span>
+        </div>
+
+        <ReactPlayer
+          className='reproducer'
+          ref={playerSongRef}
+          url={song}
+          playing={playing}
+          onEnded={()=> {setpickedButton(''), setPlaying(false), pauseCapstan();}}
+          width='0px'
+          height='0px'
+          volume={parseFloat(normalizeVolume(valueVolume))}
+          onProgress={time}
+        />
+
+        <ReactPlayer
+          className='reproducer'
+          ref={playerButtonsRef}
+          url={'/sound-effects/button-controls.wav'}
+          playing={buttonPress}
+          volume={.5}
+          width='0px'
+          height='0px'
+        />
+
+        <ReactPlayer
+          className='reproducer'
+          ref={playerTapeRef}
+          url={'/sound-effects/tape.wav'}
+          playing={tape}
+          width='0px'
+          height='0px'
+          />
+
+              
+        <ReactPlayer
+          className='reproducer'
+          ref={playerSwitchRef}
+          url={'/sound-effects/switch-cassette.wav'}
+          playing={switchCassette}
+          width='0px'
+          height='0px'
+          />
+
       </div>
-
-      <ReactPlayer
-        className='reproducer'
-        ref={playerSongRef}
-        url={song}
-        playing={playing}
-        onEnded={()=> {setpickedButton(''), setPlaying(false), pauseCapstan();}}
-        width='0px'
-        height='0px'
-        volume={parseFloat(normalizeVolume(valueVolume))}
-        onProgress={time}
-      />
-
-      <ReactPlayer
-        className='reproducer'
-        ref={playerButtonsRef}
-        url={'/sound-effects/button-controls.wav'}
-        playing={buttonPress}
-        volume={.5}
-        width='0px'
-        height='0px'
-      />
-
-      <ReactPlayer
-        className='reproducer'
-        ref={playerTapeRef}
-        url={'/sound-effects/tape.wav'}
-        playing={tape}
-        width='0px'
-        height='0px'
-        />
-
-     
-      <ReactPlayer
-        className='reproducer'
-        ref={playerSwitchRef}
-        url={'/sound-effects/switch-cassette.wav'}
-        playing={switchCassette}
-        width='0px'
-        height='0px'
-        />
-
-  </div>
       
     </div>
   )

@@ -9,7 +9,6 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
 #root {
@@ -57,6 +56,8 @@ html, body {
 
   .container-app{
     flex-direction: column-reverse;
+    justify-content: space-between;
+    height: 100vh;
   }
 
   .background{
@@ -78,13 +79,12 @@ html, body {
 
 @media (min-width: 720px) and (max-width:1299px){
 
-  body{
-    overflow: hidden;
-  }
+  
 
   .container-app{
     flex-direction: column-reverse;
     justify-content: space-between;
+    height: 100vh;
   }
 }
 
