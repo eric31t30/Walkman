@@ -45,8 +45,12 @@ function App() {
         <Walkman openDoor={openDoor} receiveCassette={cassetteSend} open={open}></Walkman>
         <span className='border-deco border-top'></span>
         <span className='border-deco border-bottom'></span>
-      
+
+        <div className="block-portrait" >
+        por favor, gira tu dispositivo.
+        </div>
       </div>
+      
     </DndContext>
   )
 }

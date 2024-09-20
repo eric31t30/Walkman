@@ -337,7 +337,9 @@
 @media (min-aspect-ratio: 4/3) and (max-width: 1280px) {
 
     .list-container{
-        min-height: 40vh;
+        min-height: auto;
+        height: 40%;
+        width: 100%;
     }
 
     .list-container-background{
@@ -364,6 +366,49 @@
         align-content: center;
     }
 }
+
+@media (max-width: 812px) and (orientation: landscape) {
+    .list-container{
+        min-height: auto;
+        height: 40%;
+        width: 100%;
+    }
+
+    .list-container-background{
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+    }
+
+    .list{
+        height: 100%;
+        width: 100%;
+        margin-top: 0px;
+    }
+
+    .call-form{
+        display: inline-block;
+        margin: 10px 0;
+        margin-left: 20px;
+        margin-bottom: 40px;
+        width: 90px;
+        height: 70px;
+        text-align: center;
+        align-content: center;
+    }
+
+    .text-open-tape{
+        font-size: 8px;
+        width: 300px;
+        height: 25px;
+        top: 60%;
+        left: 10%;
+    }
+    
+}
+
+
 
 @media (min-width: 1300px) and (max-width: 1919px){
 

@@ -174,14 +174,6 @@
     }
 }
 
-@media (min-aspect-ratio: 4/3) and (max-width: 1280px) {
-    .cassette-cont{
-        scale: .8;
-    }
-    
-}
-
-
 @media (min-width: 1300px) and (max-width: 1919px){
     .cassette-cont{
         scale: .9;
@@ -191,9 +183,20 @@
         margin: 100px 0;
         margin-left: 70px;
     }
-
 }
 
+@media (min-aspect-ratio: 4/3) and (max-width: 1280px) {
+    .cassette-cont{
+        scale: .8;
+    }
+    
+}
+
+@media (max-width: 812px) and (orientation: landscape){
+    .cassette-cont{
+        scale: .55;
+    }
+}
 
 @media (min-width: 1920px){
   .cassette-cont{
